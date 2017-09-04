@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://v3.bootcss.com/examples/navbar-fixed-top/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>MyUni page</title>
+
+    {% load staticfiles %}
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+{#    <link href="{% static 'css/navbar-fixed-top.css' %}" rel="stylesheet">#}
+    <link href="{% static 'css/navSidebar-fixed.css' %}" rel="stylesheet">
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    </head>
+  </head>
+
+  <body>
+
+  {% for group in user.groups.all %}
+      {% if group.name == 'Students' %}
+          {% include 'base_students_navbar.html' %}
+      {% elif group.name == 'TeachingStaff' %}
+          {% include 'base_teachingStaff_navbar.html' %}
+      {% elif group.name == 'Admin'%}
+          {% include 'base_admin_navbar.html' %}
+      {% endif %}
+  {% endfor %}
+
+  {% block Body %}
+  {% endblock %}
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    {% load staticfiles %}
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
+
+</body></html>

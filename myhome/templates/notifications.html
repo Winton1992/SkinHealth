@@ -1,0 +1,6 @@
+{% for notification in notifications %}
+    <div class="jumbotron">
+        <h3>{{ notification.title }}</h3>
+        <p>{{ notification.message }}</p>
+    </div>
+{% endfor %}

@@ -1,0 +1,10 @@
+<ul class="nav nav-sidebar">
+    <li class="active"><a href="{% url "unit:unit-detail" object_list.0.code %}">2016 Semester 2 - {{ object_list.0.code }}&nbsp;{{ object_list.0.name }}</a></li>
+    <li><a href="{% url "unit:unit-detail" object_list.0.code %}">View Announcement</a></li>
+    <li><a href="{% url "assignment:submit-assignment" object_list.0.code %}">Submit Assignment</a></li>
+    <li><a href="{% url "assignment:mark-assignment" object_list.0.code %}">Mark Assignment</a></li>
+    <li><a href="{% url "material:upload-material" object_list.0.code %}">Upload Teaching Materials</a></li>
+    <li><a href="{% url "material:download-material" object_list.0.code %}">Download Teaching Materials</a></li>
+    <li><a href="">Discussion board</a></li>
+    <li><a href="{% url "email:email" object_list.0.code %}">Email notification</a></li>
+</ul>
