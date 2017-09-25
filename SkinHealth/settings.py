@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'authentication.apps.AuthenticationConfig',
     'myhome.apps.MyHomeConfig',
+    'registration'
 ]
 
 MIDDLEWARE = [
@@ -81,7 +82,7 @@ DATABASES = {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'SkinHealthAssistant',
             'USER': 'root',
-            'PASSWORD': 'root',
+            'PASSWORD': '935575731Aa',
             'HOST': 'localhost',
             'PORT': '3306',
         }

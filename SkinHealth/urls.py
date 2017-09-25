@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^auth/', include('authentication.urls', namespace='authentication')),
     url(r'^myhome/', include('myhome.urls', namespace='myhome')),
+    url(r'^registration/', include('registration.urls', namespace='registration')),
 ]
