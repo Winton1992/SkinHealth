@@ -78,12 +78,20 @@ WSGI_APPLICATION = 'SkinHealth.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    # 'default': {
+    #         'ENGINE': 'django.db.backends.mysql',
+    #         'NAME': 'SkinHealthAssistant',
+    #         'USER': 'root',
+    #         'PASSWORD': '935575731Aa',
+    #         'HOST': 'localhost',
+    #         'PORT': '3306',
+    #     }
+'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'SkinHealthAssistant',
+            'NAME': 'elec5622',
             'USER': 'root',
-            'PASSWORD': '935575731Aa',
-            'HOST': 'localhost',
+            'PASSWORD': 'admin123',
+            'HOST': 'elec5622.cybstkdmoonr.us-east-2.rds.amazonaws.com',
             'PORT': '3306',
         }
 }
