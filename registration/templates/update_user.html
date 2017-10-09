@@ -8,7 +8,7 @@
     <meta name="author" content="">
 {#    <link rel="icon" href="#">#}
 
-    <title>Loginpage</title>
+    <title>Edit_Profile</title>
 
     {% load staticfiles %}
     <!-- Bootstrap core CSS -->
@@ -24,37 +24,33 @@
     <![endif]-->
 </head>
 <body>
- <form class="form-signin" role="form" action="" method="post" enctype="multipart/form-data">
+<div class="container">
+ <form class="form-group-lg" role="form" action="" method="post" enctype="multipart/form-data">
           {% csrf_token %}
           <h2 class="text-center">Edit Profile</h2>
          <tr><th><label>Username:</label></th>
-             <td> <input type="text" name="username" class="" placeholder="username" required="" autofocus=""></td></tr>
+             <td> <input type="text" name="username" class="form-group" placeholder="username" required="" autofocus=""></td></tr>
      <br>
      <p style="line-height: 2px"></p>
 
          <tr><th><label >Email:</label></th>
-             <td> <input type="email" name="email" class="" placeholder="email" required="" autofocus=""></td></tr>
-{#          <div class="checkbox">#}
-{#              <label>#}
-{#                  <input type="checkbox" value="remember-me"> Remember me#}
-{#              </label>#}
-{#          </div>#}
+             <td> <input type="email" name="email" class="form-group" placeholder="email" required="" autofocus=""></td></tr>
+
       <p style="line-height: 2px"></p>
      <div class="col s12 m8 offset-m2">
-      <div class="card">
-        <div class="card-content">
-          <form action="." method="POST" class="padding">
+          <form action="." method="POST" >
             {% csrf_token %}
             <div class="divider"></div>
             {{ formset.management_form }}
                 {{ formset.as_p }}
-            <button type="submit" class="btn-floating btn-large waves-light waves-effect"><i class="large material-icons">edit</i></button>
+            <button type="submit" class="btn btn-default"><i class="large material-icons">edit</i></button>
 
         </form>
         </div>
-    </div>
-</div>
 
- </form>
+
+ </form></div>
+
 </body>
 </html>
+

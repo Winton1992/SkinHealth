@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="DataSourceManagerImpl" format="xml" hash="3610053879">
     <data-source source="LOCAL" name="Django default" uuid="4a5ccaf1-d272-4e85-9d62-a56e9bb79f8c">
       <driver-ref>mysql</driver-ref>
@@ -29,6 +30,10 @@
       </libraries>
     </data-source>
     <data-source source="LOCAL" name="SkinHealthAssistant@localhost" uuid="c3a8e256-a53e-440d-8188-0503d2baefe8">
+=======
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="SkinHealthAssistant@localhost" uuid="b044dd73-c6b8-4960-a0fb-74a5996352a4">
+>>>>>>> 33cd93635eb9987083e156c88faf4aaf87b6d148
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>

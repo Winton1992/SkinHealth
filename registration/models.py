@@ -4,8 +4,18 @@ from django.db.models.signals import post_save
 
 class UserProfile(models.Model):
     user=models.OneToOneField(User)
-    gender=models.CharField(max_length=10,default='')
-    skinType=models.CharField(max_length=10,default='')
+    GENDER_CHOICE=(
+        ('femail','femail'),
+        ('male','male'),
+    )
+
+    SKINTYPE_CHOICE = (
+        ('dry', 'dry'),
+        ('oily', 'oily'),
+        ('normal','normal'),
+    )
+    gender=models.CharField(max_length=10,default='',choices=GENDER_CHOICE)
+    skinType=models.CharField(max_length=10,default='',choices=SKINTYPE_CHOICE)
 
     def __str__(self):
         return self.user.username

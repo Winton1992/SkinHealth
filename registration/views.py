@@ -28,28 +28,12 @@ def view_profile(request):
      args = {'user': request.user}
      return render(request, 'profile.html', args)
 
-# def edit_profile(request):
-#      if request.method == 'POST':
-#        form = EditProfileForm(request.POST, instance=request.user)
-#
-#        if form.is_valid():
-#            form.save()
-#            return redirect('/myhome/')
-#      else:
-#          form = EditProfileForm(instance=request.user)
-#          args = {'form': form}
-#          return render(request, 'edit_profile.html', args)
 
 @login_required() # only logged in users should access this
 def edit_user(request):
-    # querying the User object with pk from url
-    # user = User.objects.get(pk=pk)
 
-
-    # prepopulate UserProfileForm with retrieved user values from above.
     user_form = EditProfileForm(instance=request.user)
 
-    # The sorcery begins from here, see explanation below
     ProfileInlineFormset = inlineformset_factory(User, UserProfile, fields=('gender','skinType'))
     formset = ProfileInlineFormset(instance=request.user)
 
