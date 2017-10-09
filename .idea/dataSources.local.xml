@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Django default" uuid="4a5ccaf1-d272-4e85-9d62-a56e9bb79f8c">
+      <secret-storage>memory</secret-storage>
+      <user-name>root</user-name>
+    </data-source>
+    <data-source name="SkinHealthAssistant@localhost" uuid="c3a8e256-a53e-440d-8188-0503d2baefe8">
+      <secret-storage>memory</secret-storage>
+    </data-source>
+  </component>
+</project>
