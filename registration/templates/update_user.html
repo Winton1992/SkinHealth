@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://v3.bootcss.com/examples/signin/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+{#    <link rel="icon" href="#">#}
+
+    <title>Loginpage</title>
+
+    {% load staticfiles %}
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/signin.css' %}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+ <form class="form-signin" role="form" action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <h2 class="text-center">Edit Profile</h2>
+         <tr><th><label>Username:</label></th>
+             <td> <input type="text" name="username" class="" placeholder="username" required="" autofocus=""></td></tr>
+     <br>
+     <p style="line-height: 2px"></p>
+
+         <tr><th><label >Email:</label></th>
+             <td> <input type="email" name="email" class="" placeholder="email" required="" autofocus=""></td></tr>
+{#          <div class="checkbox">#}
+{#              <label>#}
+{#                  <input type="checkbox" value="remember-me"> Remember me#}
+{#              </label>#}
+{#          </div>#}
+      <p style="line-height: 2px"></p>
+     <div class="col s12 m8 offset-m2">
+      <div class="card">
+        <div class="card-content">
+          <form action="." method="POST" class="padding">
+            {% csrf_token %}
+            <div class="divider"></div>
+            {{ formset.management_form }}
+                {{ formset.as_p }}
+            <button type="submit" class="btn-floating btn-large waves-light waves-effect"><i class="large material-icons">edit</i></button>
+
+        </form>
+        </div>
+    </div>
+</div>
+
+ </form>
+</body>
+</html>
