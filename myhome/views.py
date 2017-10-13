@@ -4,6 +4,7 @@ from .models import Notification
 from django.contrib.auth.mixins import LoginRequiredMixin
 import serial
 from django.shortcuts import render, get_object_or_404
+from myhome.models import UV
 
 
 # Create your views here.
@@ -18,10 +19,15 @@ class MyHomeListView(LoginRequiredMixin, ListView):
 
 def ArdunioConnection(request):
 
-    ser = serial.Serial("/dev/cu.usbmodem1411", baudrate=9600)
+     ser = serial.Serial("/dev/cu.usbmodem1411", baudrate=9600)
 
-    while 1:
-        arduinoData = ser.readline().decode('ascii')
-        print(arduinoData)
-    context = {'arduinoData': arduinoData}
-    return render(request, 'myhome:connection', context)
+     while 1:
+         arduinoData = ser.readline().decode('ascii')
+         print(arduinoData)
+         p = UV.objects.create(value=arduinoData)
+         p.save()
+
+     context = {'arduinoData': arduinoData}
+     return render(request, 'myhome:connection', context)
+
+

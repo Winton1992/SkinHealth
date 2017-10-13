@@ -6,5 +6,5 @@ class Notification(models.Model):
     title = models.CharField(max_length=50)
     message = models.CharField(max_length=500)
 
-    def __str__(self):
-        return self.title
+class UV(models.Model):
+        value = models.IntegerField()
