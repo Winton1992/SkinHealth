@@ -5,5 +5,5 @@ app_name = 'myhome'
 
 urlpatterns = [
     url(r'^$', views.MyHomeListView.as_view(), name='myhome'),
-    url(r'^$', views.MyHomeListView.as_view(), name='myhome'),
+    url(r'^testCon$', views.ArdunioConnection, name='connection'),
 ]
