@@ -5,6 +5,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 import serial
 from django.shortcuts import render, get_object_or_404
 from myhome.models import UV
+from django.views.generic import View
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views import generic
 
 
 # Create your views here.
@@ -27,7 +30,16 @@ def ArdunioConnection(request):
          p = UV.objects.create(value=arduinoData)
          p.save()
 
+
      context = {'arduinoData': arduinoData}
      return render(request, 'myhome:connection', context)
+
+
+class IndexView(generic.ListView):
+    template_name = "/Users/zhukewei/elec5622/myhome/templates/showdata.html"
+    context_object_name = "all_data"
+
+    def get_queryset(self):
+        return UV.objects.all()
 
 
