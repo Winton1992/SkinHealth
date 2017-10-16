@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+from datetime import timedelta
 
 
 # Create your models here.
@@ -8,3 +10,4 @@ class Notification(models.Model):
 
 class UV(models.Model):
         value = models.IntegerField()
+        time = models.DateTimeField(default=timezone.now)

@@ -40,6 +40,6 @@ class IndexView(generic.ListView):
     context_object_name = "all_data"
 
     def get_queryset(self):
-        return UV.objects.all()
+        return UV.objects.all().order_by("-time")[:1]
 
 
