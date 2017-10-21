@@ -11,3 +11,11 @@ class Notification(models.Model):
 class UV(models.Model):
         value = models.IntegerField()
         time = models.DateTimeField(default=timezone.now)
+
+class Temperature(models.Model):
+    value = models.IntegerField()
+    time = models.DateTimeField(default=timezone.now)
+
+class Humidity(models.Model):
+    value = models.IntegerField()
+    time = models.DateTimeField(default=timezone.now)

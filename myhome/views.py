@@ -36,10 +36,11 @@ def ArdunioConnection(request):
 
 
 class IndexView(generic.ListView):
-    template_name = "/Users/zhukewei/elec5622/myhome/templates/showdata.html"
+    template_name = "showdata.html"
     context_object_name = "all_data"
 
     def get_queryset(self):
         return UV.objects.all().order_by("-time")[:1]
+        #return UV.objects.all()
 
 
