@@ -1,15 +1,30 @@
 {% extends 'base.html' %}
 {% block Body %}
-    {% if all_data %}
+    <div class="container">
+        <div class="page-header">
+
+        </div>
+
+        {% if all_data %}
         <ul>
             {% for data in all_data %}
-                <h2>{{ data.value }}</h2>
 
+                <a class="btn btn-primary btn-lg" href="#" role="button" >Get Current Data</a>
+
+                <h2>{{ data.value }}</h2>
+                <h2>{{ data.time }}</h2><br>
+{#                <meta http-equiv="Refresh" content="1">#}
+
+                <form action="/action_page.php">
+
+</form>
             {% endfor %}
         </ul>
-    {% else %}
+        {% else %}
         <h3>You do not have any data</h3>
-    {% endif %}
+        {% endif %}
+    </div>
+
 
 
 {% endblock %}
