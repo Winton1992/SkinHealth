@@ -41,6 +41,6 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         return UV.objects.all().order_by("-time")[:1]
-        #return UV.objects.all()
+        
 
 
