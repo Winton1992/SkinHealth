@@ -41,6 +41,14 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         return UV.objects.all().order_by("-time")[:1]
+
+
+class HistoryView(generic.ListView):
+    template_name = "history.html"
+    context_object_name = "all_data"
+
+    def get_queryset(self):
+        return UV.objects.all().order_by("-time")[:1]
         
 
 
