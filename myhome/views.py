@@ -27,8 +27,14 @@ def ArdunioConnection(request):
      while 1:
          arduinoData = ser.readline().decode('ascii')
          print(arduinoData)
-         p = UV.objects.create(value=arduinoData)
-         p.save()
+         data_display = arduinoData.split(',')
+         Tvalue = data_display[0]
+         Hvalue = data_display[1]
+         Uvalue = data_display[2]
+         println(Tvalue)
+
+         # p = UV.objects.create(value=arduinoData)
+         # p.save()
 
 
      context = {'arduinoData': arduinoData}

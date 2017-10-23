@@ -12,10 +12,8 @@ class UV(models.Model):
         value = models.IntegerField()
         time = models.DateTimeField(default=timezone.now)
 
-class Temperature(models.Model):
-    value = models.IntegerField()
+class DHT(models.Model):
+    Tvalue = models.FloatField()
+    Hvalue = models.FloatField()
     time = models.DateTimeField(default=timezone.now)
 
-class Humidity(models.Model):
-    value = models.IntegerField()
-    time = models.DateTimeField(default=timezone.now)
