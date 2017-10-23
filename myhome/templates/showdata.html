@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block Body %}
+{% block body %}
     <div class="container">
         <div class="page-header">
 
@@ -11,15 +11,18 @@
 
                 <a class="btn btn-primary btn-lg" href="#" role="button" >Get Current Data</a>
 
-                <h2>{{ data.value }}</h2>
+                <h2>{{ data.Uvalue }}</h2>
+                <h2>{{ data.Hvalue }}</h2>
+                <h2>{{ data.Tvalue }}</h2>
                 <h2>{{ data.time }}</h2><br>
-{#                <meta http-equiv="Refresh" content="1">#}
+
             {% endfor %}
         </ul>
         {% else %}
         <h3>You do not have any data</h3>
         {% endif %}
     </div>
+
 
 
 

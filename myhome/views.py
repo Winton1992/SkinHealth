@@ -4,7 +4,7 @@ from .models import Notification
 from django.contrib.auth.mixins import LoginRequiredMixin
 import serial
 from django.shortcuts import render, get_object_or_404
-from myhome.models import UV
+from myhome.models import Seneor
 from django.views.generic import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views import generic
@@ -28,16 +28,19 @@ def ArdunioConnection(request):
          arduinoData = ser.readline().decode('ascii')
          print(arduinoData)
          data_display = arduinoData.split(',')
-         Tvalue = data_display[0]
-         Hvalue = data_display[1]
-         Uvalue = data_display[2]
-         println(Tvalue)
+         data_display = arduinoData.strip('\n').strip('\r')
+         print(data_display)
+         Tvalue = float(data_display[:5])
+         Hvalue = float(data_display[6:11])
+         Uvalue = int(data_display[12:])
+         print(Tvalue)
+         print(Hvalue)
+         print(Uvalue)
 
-         # p = UV.objects.create(value=arduinoData)
-         # p.save()
+         data = Seneor.objects.create(Tvalue=Tvalue, Uvalue=Uvalue, Hvalue=Hvalue)
+         data.save()
+         context = {'data': data}
 
-
-     context = {'arduinoData': arduinoData}
      return render(request, 'myhome:connection', context)
 
 
@@ -46,7 +49,7 @@ class IndexView(generic.ListView):
     context_object_name = "all_data"
 
     def get_queryset(self):
-        return UV.objects.all().order_by("-time")[:1]
+        return Seneor.objects.all().order_by('-time')[:1]
 
 
 class HistoryView(generic.ListView):
