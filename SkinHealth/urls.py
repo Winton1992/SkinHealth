@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.conf.urls import url, include
 from django.contrib import admin
 from myhome import views
+from Data.views import DataHistoryView
+from Data.views import APIDataHistoryView
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -27,4 +29,7 @@ urlpatterns = [
     url(r'^auth/', include('authentication.urls', namespace='authentication')),
     url(r'^myhome/', include('myhome.urls', namespace='myhome')),
     url(r'^registration/', include('registration.urls', namespace='registration')),
+    url(r'^Data/history/$', DataHistoryView.as_view(), name='raw-data-data-trend'),
+    # Raw Data API
+    url(r'^api/Data/history/$', APIDataHistoryView.as_view(), name='api-data-history'),
 ]

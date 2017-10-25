@@ -1,43 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
-  <component name="DataSourceManagerImpl" format="xml" hash="3610053879">
-    <data-source source="LOCAL" name="Django default" uuid="4a5ccaf1-d272-4e85-9d62-a56e9bb79f8c">
-      <driver-ref>mysql</driver-ref>
-      <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>$PROJECT_DIR$/SkinHealth/settings.py</remarks>
-      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://127.0.0.1:3306/SkinHealthAssistant</jdbc-url>
-      <explain-plan-config>
-        <provider>com.intellij.database.plan.ExplainPlanProvider.NullExplainPlanProvider</provider>
-      </explain-plan-config>
-      <driver-properties>
-        <property name="autoReconnect" value="true" />
-        <property name="zeroDateTimeBehavior" value="convertToNull" />
-        <property name="tinyInt1isBit" value="false" />
-        <property name="characterEncoding" value="utf8" />
-        <property name="characterSetResults" value="utf8" />
-        <property name="yearIsDateType" value="false" />
-      </driver-properties>
-      <libraries>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/mysql-connector-license.txt</url>
-        </library>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/mysql-connector-java-5.1.40-bin.jar</url>
-        </library>
-      </libraries>
-    </data-source>
-    <data-source source="LOCAL" name="SkinHealthAssistant@localhost" uuid="c3a8e256-a53e-440d-8188-0503d2baefe8">
-=======
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="SkinHealthAssistant@localhost" uuid="b044dd73-c6b8-4960-a0fb-74a5996352a4">
->>>>>>> 33cd93635eb9987083e156c88faf4aaf87b6d148
+    <data-source source="LOCAL" name="elec5622sydney@elec5622sydney.cxfybvg2st2x.ap-southeast-2.rds.amazonaws.com" uuid="d6fbe2a6-dc23-48c4-9859-1c22e83f37b8">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/SkinHealthAssistant</jdbc-url>
+      <jdbc-url>jdbc:mysql://elec5622sydney.cxfybvg2st2x.ap-southeast-2.rds.amazonaws.com:3306/elec5622sydney</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

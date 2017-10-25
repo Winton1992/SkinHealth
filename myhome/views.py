@@ -8,6 +8,7 @@ from myhome.models import Seneor
 from django.views.generic import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views import generic
+import json
 
 
 # Create your views here.
@@ -52,12 +53,28 @@ class IndexView(generic.ListView):
         return Seneor.objects.all().order_by('-time')[:1]
 
 
+
+
 class HistoryView(generic.ListView):
     template_name = "history.html"
-    context_object_name = "all_data"
 
     def get_queryset(self):
-        return UV.objects.all().order_by("-time")[:1]
-        
+        alldata = Seneor.objects.all().order_by('-time')[:10]
+        data = []
+
+        for _ in alldata:
+            json_data = {
+                "id": _.id,
+                "Tvalue":_.Tvalue
+            }
+
+            data.insert(0,json_data)
+
+        print(data)
+
+        with open('static/json/data.json', 'w') as outfile:
+            json.dump(data, outfile)
+
+        return alldata
 
 

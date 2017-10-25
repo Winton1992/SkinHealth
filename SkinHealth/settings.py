@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'authentication.apps.AuthenticationConfig',
     'myhome.apps.MyHomeConfig',
-    'registration'
+    'registration',
+    'Data'
 ]
 
 MIDDLEWARE = [
@@ -95,6 +96,16 @@ DATABASES = {
             'PORT': '3306',
         }
 }
+
+# 'default': {
+#             'ENGINE': 'django.db.backends.mysql',
+#             'NAME': 'elec5622sydney',
+#             'USER': 'root',
+#             'PASSWORD': 'admin123',
+#             'HOST': 'elec5622sydney.cxfybvg2st2x.ap-southeast-2.rds.amazonaws.com',
+#             'PORT': '3306',
+#         }
+# }
 
 
 # Password validation
