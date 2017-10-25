@@ -59,19 +59,40 @@ class HistoryView(generic.ListView):
     template_name = "history.html"
 
     def get_queryset(self):
-        alldata = Seneor.objects.all().order_by('-time')[:10]
+        alldata = Seneor.objects.all().order_by('-time')[:100]
         data = []
 
+        # for _ in alldata:
+        #     json_data = {
+        #         "id": _.id,
+        #         "Tvalue":_.Tvalue
+        #     }
+        #
+        #     data.insert(0,json_data)
+        #
+        # print(data)
+        count = 1
+        average_value = 0
+        total_value = 0
+        time_hour = 1
         for _ in alldata:
-            json_data = {
-                "id": _.id,
-                "Tvalue":_.Tvalue
-            }
+            if count % 10!=0:
+                total_value = total_value + _.Tvalue
+                count = count + 1
 
-            data.insert(0,json_data)
-
-        print(data)
-
+            else:
+                count = 1
+                average_value = total_value/10
+                print(total_value)
+                print("average:", average_value)
+                json_data = {
+                    "id": time_hour,
+                    "Tvalue": average_value
+                }
+                print(average_value)
+                data.insert(0, json_data)
+                time_hour = time_hour + 1
+                total_value = 0
         with open('static/json/data.json', 'w') as outfile:
             json.dump(data, outfile)
 
