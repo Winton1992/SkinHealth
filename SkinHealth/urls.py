@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^auth/', include('authentication.urls', namespace='authentication')),
     url(r'^myhome/', include('myhome.urls', namespace='myhome')),
     url(r'^registration/', include('registration.urls', namespace='registration')),
-    url(r'^Data/history/$', DataHistoryView.as_view(), name='raw-data-data-trend'),
+    url(r'^Data/history/$', DataHistoryView.as_view(), name='DataHistory_Tvalue'),
     # Raw Data API
     url(r'^api/Data/history/$', APIDataHistoryView.as_view(), name='api-data-history'),
 ]

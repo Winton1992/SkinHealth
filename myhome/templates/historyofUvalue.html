@@ -32,8 +32,8 @@
             <h5>Display</h5>
             <form id="form1">
                 <select class="form-control" name= "Filter" id="select1" >
-                    <option  type="UV" >UV Value</option>
-                    <option type="Humid" >Humid Value</option>
+                    <option  type="Day" >Day</option>
+                    <option type="Week" >Week</option>
                 </select>
             </form>
         </div>
@@ -95,7 +95,7 @@
 
                     // scale the range of the data
                     x.domain(data.map(function(d) { return d.id; }));
-                    y.domain([0, d3.max(data, function(d) { return d.Tvalue; })]);
+                    y.domain([0, d3.max(data, function(d) { return d.Uvalue; })]);
 
                     // add axis
                     svg.append("g")
@@ -112,6 +112,8 @@
                         .attr("class", "y axis")
                         .call(yAxis)
                         .append("text")
+                        .attr("font-weight", "bold")
+                        .attr("fill", "#000")
                         .attr("transform", "rotate(-90)")
                         .attr("y", -50)
                         .attr("dy", ".71em")
@@ -126,8 +128,8 @@
                         .attr("class", "bar")
                         .attr("x", function(d) { return x(d.id); })
                         .attr("width", x.rangeBand())
-                        .attr("y", function(d) { return y(d.Tvalue); })
-                        .attr("height", function(d) { return height - y(d.Tvalue); });
+                        .attr("y", function(d) { return y(d.Uvalue); })
+                        .attr("height", function(d) { return height - y(d.Uvalue); });
 
                 });
 

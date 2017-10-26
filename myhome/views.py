@@ -55,13 +55,12 @@ class IndexView(generic.ListView):
 
 
 
-class HistoryView(generic.ListView):
-    template_name = "history.html"
+class History_TvalueView(generic.ListView):
+    template_name = "historyofTvalue.html"
 
     def get_queryset(self):
         alldata = Seneor.objects.all().order_by('-time')[:100]
         data = []
-
         # for _ in alldata:
         #     json_data = {
         #         "id": _.id,
@@ -98,4 +97,71 @@ class HistoryView(generic.ListView):
 
         return alldata
 
+class History_UvalueView(generic.ListView):
+    template_name = "historyofUvalue.html"
 
+    def get_queryset(self):
+        alldata = Seneor.objects.all().order_by('-time')[:100]
+        data = []
+
+        count = 1
+        average_value = 0
+        total_value = 0
+        time_hour = 1
+        for _ in alldata:
+            if count % 10!=0:
+                total_value = total_value + _.Uvalue
+                count = count + 1
+
+            else:
+                count = 1
+                average_value = total_value/10
+                print(total_value)
+                print("average:", average_value)
+                json_data = {
+                    "id": time_hour,
+                    "Uvalue": average_value
+                }
+                print(average_value)
+                data.insert(0, json_data)
+                time_hour = time_hour + 1
+                total_value = 0
+        with open('static/json/data.json', 'w') as outfile:
+            json.dump(data, outfile)
+
+        return alldata
+
+
+class History_HvalueView(generic.ListView):
+    template_name = "historyofHvalue.html"
+
+    def get_queryset(self):
+        alldata = Seneor.objects.all().order_by('-time')[:100]
+        data = []
+
+        count = 1
+        average_value = 0
+        total_value = 0
+        time_hour = 1
+        for _ in alldata:
+            if count % 10 != 0:
+                total_value = total_value + _.Hvalue
+                count = count + 1
+
+            else:
+                count = 1
+                average_value = total_value / 10
+                print(total_value)
+                print("average:", average_value)
+                json_data = {
+                    "id": time_hour,
+                    "Hvalue": average_value
+                }
+                print(average_value)
+                data.insert(0, json_data)
+                time_hour = time_hour + 1
+                total_value = 0
+        with open('static/json/data.json', 'w') as outfile:
+            json.dump(data, outfile)
+
+        return alldata
