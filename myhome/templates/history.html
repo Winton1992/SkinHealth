@@ -23,12 +23,12 @@
 </style>
 
 {% block main %}
-   <div class="col-xs-9" style="padding: 5px;">
-               <svg width="800" height="430" id="chart" ></svg>
-          </div>
+    <div class="col-xs-9" style="padding: 5px;">
+        <svg width="800" height="430" id="chart" ></svg>
+    </div>
 
-    <div class="row">
-        <div class="col-xs-3 navbar-right pull-right" style="padding-left: 10px; width: 200px;">
+    <div class="col-xs-3">
+        <div style="padding-left: 10px; width: 200px;">
             <h5>Display</h5>
             <form id="form1">
                 <select class="form-control" name= "Filter" id="select1" >
@@ -38,7 +38,7 @@
             </form>
         </div>
     </div>
-   
+
 {% endblock %}
 <script>
     {% block script %}
@@ -55,8 +55,8 @@
                 //     width = 600 - margin.left - margin.right,
                 //     height = 300 - margin.top - margin.bottom;
                 var margin = {top: 30, right: 20, bottom: 50, left: 100},
-                width = parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
-                height = parseInt(d3.select("#chart").style("height")) - margin.top - margin.bottom;
+                    width = parseInt(d3.select("#chart").style("width")) - margin.left - margin.right,
+                    height = parseInt(d3.select("#chart").style("height")) - margin.top - margin.bottom;
 
 
 // set the ranges
