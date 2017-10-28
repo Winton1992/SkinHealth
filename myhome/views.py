@@ -175,8 +175,6 @@ class History_HvalueView(generic.ListView):
              Notification = "Warning: The Humid value in your environment is too high."
              return Notification
 
-           #return render_to_response('historyofHvalue.html',RequestContext(request),{'total_val': total_val})
-
 
 
 
