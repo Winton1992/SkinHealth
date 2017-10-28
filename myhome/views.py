@@ -9,8 +9,6 @@ from django.views.generic import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views import generic
 import json
-from django.shortcuts import render_to_response
-from django.template import RequestContext
 
 
 # Create your views here.
@@ -136,18 +134,16 @@ class History_UvalueView(generic.ListView):
 
 class History_HvalueView(generic.ListView):
     template_name = "historyofHvalue.html"
-    context_object_name = "Notification"
 
-    def get_queryset(request):
+    def get_queryset(self):
         alldata = Seneor.objects.all().order_by('-time')[:100]
         data = []
+
         count = 1
         average_value = 0
         total_value = 0
         time_hour = 1
-        total_val = 0
         for _ in alldata:
-            total_val = total_val + _.Hvalue
             if count % 10 != 0:
                 total_value = total_value + _.Hvalue
                 count = count + 1
@@ -165,26 +161,31 @@ class History_HvalueView(generic.ListView):
                 data.insert(0, json_data)
                 time_hour = time_hour + 1
                 total_value = 0
-
-
         with open('static/json/data.json', 'w') as outfile:
             json.dump(data, outfile)
 
+        return alldata
 
-        if total_val / 10 > 50:
-             Notification = "Warning: The Humid value in your environment is too high."
-             return Notification
-
-           #return render_to_response('historyofHvalue.html',RequestContext(request),{'total_val': total_val})
-
-
-
-
-
-
-
-
-
-
-
-
+class UV_valueView(generic.ListView):
+    template_name = "UV.html"
+    def get_queryset(self):
+        alldata = Seneor.objects.all().order_by('-time')[:100]
+        return alldata
+#
+# class Current_Humidity_valueView(generic.ListView):
+#     template_name = "currentHvalue.html"
+#     def get_queryset(self):
+#         alldata = Seneor.objects.all().order_by('-time')[:100]
+#         return alldata
+#
+# class Current_Temperature_valueView(generic.ListView):
+#     template_name = "currentTvalue.html"
+#     def get_queryset(self):
+#         alldata = Seneor.objects.all().order_by('-time')[:100]
+#         return alldata
+#
+# class Current_UV_valueView(generic.ListView):
+#     template_name = "currentUvalue.html"
+#     def get_queryset(self):
+#         alldata = Seneor.objects.all().order_by('-time')[:100]
+#         return alldata
