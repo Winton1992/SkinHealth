@@ -36,6 +36,9 @@
                     <option type="Week" >Week</option>
                 </select>
             </form>
+            
+           <h2>{{ Notification }}</h2> 
+
         </div>
     </div>
 
@@ -59,12 +62,12 @@
                     height = parseInt(d3.select("#chart").style("height")) - margin.top - margin.bottom;
 
 
-// set the ranges
+                // set the ranges
                 var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
 
                 var y = d3.scale.linear().range([height, 0]);
 
-// define the axis
+                // define the axis
                 var xAxis = d3.svg.axis()
                     .scale(x)
                     .orient("bottom")
@@ -76,7 +79,7 @@
                     .ticks(10);
 
 
-// add the SVG element
+                // add the SVG element
                 var svg = d3.select("#chart").append("svg")
                     .attr("width", width + margin.left + margin.right)
                     .attr("height", height + margin.top + margin.bottom)
@@ -85,7 +88,7 @@
                         "translate(" + margin.left + "," + margin.top + ")");
 
 
-// load the data
+                // load the data
                 d3.json(endpoint, function(error, data) {
 
                     data.forEach(function(d) {
