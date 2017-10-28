@@ -20,7 +20,7 @@ class APIDataHistoryView(APIView):
     def get(self, request, format=None, **kwargs):
 
         # with open('static/csv/data.csv') as r, open('static/json/data.json', 'w') as w:
-        #     convert(r, w)
+
 
         with open('static/json/data.json', newline='') as jsonfile:
             data = json.load(jsonfile)
