@@ -62,8 +62,11 @@ class IndexView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        context['Notification'] = "Hello"
-        return context
+        alldata = Seneor.objects.all().order_by('-time')[:1]
+        for _ in alldata:
+            if  _.Hvalue > 20:
+               context['Notification'] = "hot"
+               return context
 
 
 class History_TvalueView(generic.ListView):

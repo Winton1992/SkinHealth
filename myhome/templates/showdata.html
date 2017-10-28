@@ -4,7 +4,7 @@
         <div class="page-header">
 
         </div>
-        <h2>{{ Notification }}</h2>
+<h2>{{ Notification }}</h2>
         {% if all_data %}
         <ul>
             {% for data in all_data %}
@@ -16,6 +16,7 @@
                 <h2>{{ data.Tvalue }}</h2>
                 <h2>{{ data.time }}</h2><br>
 
+
             {% endfor %}
         </ul>
         {% else %}
@@ -23,7 +24,19 @@
         {% endif %}
     </div>
     <a class="btn btn-primary btn-lg" href="data" role="button" >Get Current Data</a>
+{#   <div>#}
+{#    {% if messages %}#}
+{#      <ul class="messages">#}
+{#    {% for message in messages %}#}
+{#    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>#}
+{#        {{ message }}#}
+{#    </li>#}
+{#    {% endfor %}#}
+{#    </ul>#}
+{#    {% endif %}#}
+{#</div>#}
 
+<h1>{{ Message }}</h1>
 
 
 
