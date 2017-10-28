@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
-{% block data %}
+{% block main %}
     <div class="container">
         <div class="page-header">
 
         </div>
-
+        <h2>{{ Notification }}</h2>
         {% if all_data %}
         <ul>
             {% for data in all_data %}

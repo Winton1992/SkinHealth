@@ -47,6 +47,12 @@ def ArdunioConnection(request):
      return render(request, 'myhome:connection', context)
 
 
+# class IndexView(generic.ListView):
+#     template_name = "showdata.html"
+#     context_object_name = "all_data"
+#
+#     def get_queryset(self):
+#         return Seneor.objects.all().order_by('-time')[:1]
 class IndexView(generic.ListView):
     template_name = "showdata.html"
     context_object_name = "all_data"
@@ -54,11 +60,15 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Seneor.objects.all().order_by('-time')[:1]
 
-
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context['Notification'] = "Hello"
+        return context
 
 
 class History_TvalueView(generic.ListView):
     template_name = "historyofTvalue.html"
+    context_object_name = "Notification"
 
     def get_queryset(self):
         alldata = Seneor.objects.all().order_by('-time')[:100]
@@ -75,8 +85,10 @@ class History_TvalueView(generic.ListView):
         count = 1
         average_value = 0
         total_value = 0
+        total_val = 0
         time_hour = 1
         for _ in alldata:
+            total_val = total_val + _.Tvalue
             if count % 10!=0:
                 total_value = total_value + _.Tvalue
                 count = count + 1
@@ -97,20 +109,24 @@ class History_TvalueView(generic.ListView):
         with open('static/json/data.json', 'w') as outfile:
             json.dump(data, outfile)
 
-        return alldata
+        if total_val / 10 > 20:
+             Notification = "Warning: The temperature is too hign."
+             return Notification
+
 
 class History_UvalueView(generic.ListView):
     template_name = "historyofUvalue.html"
-
+    context_object_name = "Notification"
     def get_queryset(self):
         alldata = Seneor.objects.all().order_by('-time')[:100]
         data = []
-
+        total_val = 0
         count = 1
         average_value = 0
         total_value = 0
         time_hour = 1
         for _ in alldata:
+            total_val = total_val + _.Hvalue
             if count % 10!=0:
                 total_value = total_value + _.Uvalue
                 count = count + 1
@@ -131,7 +147,9 @@ class History_UvalueView(generic.ListView):
         with open('static/json/data.json', 'w') as outfile:
             json.dump(data, outfile)
 
-        return alldata
+        if total_val / 10 > 50:
+             Notification = "Warning: You were exposed under high UV value."
+             return Notification
 
 
 class History_HvalueView(generic.ListView):
@@ -180,7 +198,11 @@ class History_HvalueView(generic.ListView):
 
 
 
-
+class UV_valueView(generic.ListView):
+    template_name = "UV.html"
+    def get_queryset(self):
+        alldata = Seneor.objects.all().order_by('-time')[:100]
+        return alldata
 
 
 

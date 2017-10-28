@@ -23,11 +23,11 @@
 </style>
 
 {% block main %}
-    <div class="col-xs-9" style="padding: 5px;">
+    <div class="col-xs-8" style="padding: 5px;">
         <svg width="800" height="430" id="chart" ></svg>
     </div>
 
-    <div class="col-xs-3">
+    <div class="col-xs-4">
         <div style="padding-left: 10px; width: 200px;">
             <h5>Display</h5>
             <form id="form1">
@@ -37,8 +37,10 @@
                 </select>
             </form>
             
-           <h2>{{ Notification }}</h2> 
-
+            
+               <img src="/static/image/advice.png" height="150" width="200">
+               <textarea cols="50" rows="10" wrap="hard" readonly="yes">{{ Notification }} </textarea>
+          
         </div>
     </div>
 
