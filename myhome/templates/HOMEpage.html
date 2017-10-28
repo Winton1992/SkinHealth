@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<meta name="title" content="Bootstrap可视化布局系统">
+	<meta name="description" content="Bootstrap可视化布局系统是一款可在线拖放排序、在线编辑的Bootstrap可视化编辑器，通过该工具你可以通过拖放的形式的实现在线编辑基于bootstrap的html模板，并可直接生成模板，生成的模板可以直接下载。">
+	<meta name="keywords" content="bootstrap在线编辑器,bootstrap在线设计,bootstrap可视化工具">
+
+	<!-- Le styles -->
+	<link href="//cdn.staticfile.org/twitter-bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="v3/layoutit.css" rel="stylesheet">
+
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	<script src="//apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+
+	<!-- Fav and touch icons -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="v3/apple-touch-icon-144-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="v3/apple-touch-icon-114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="v3/apple-touch-icon-72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="v3/apple-touch-icon-57-precomposed.png">
+	<link rel="shortcut icon" href="http://www.runoob.com/favicon.ico">
+
+	<script type="text/javascript" src="http://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript" src="http://cdn.staticfile.org/jqueryui/1.10.2/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="http:/cdn.staticfile.org/jqueryui-touch-punch/0.2.2/jquery.ui.touch-punch.min.js"></script>
+	<script type="text/javascript" src="http://cdn.staticfile.org/twitter-bootstrap/3.0.1/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="v3/jquery.htmlClean.js"></script>
+	<script type="text/javascript" src="v3/scripts.min.js"></script>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Skin Health</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="#" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        {% block style %}
+        {% endblock %}
+    </style>
+
+
+</head>
+
+
+<body >
+
+{#navigate bar#}
+ <div class="fluid-container">
+{#        <img alt="" src="/static/image/title.jpg" height="80" width="1680" />#}
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href={% url "myhome:myhome" %}>Skin Health Assistant</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li><a href="#">UV</a></li>
+                <li><a href="#">Humidity</a></li>
+                <li><a href="#">Temperature</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+    </div>
+{#    picture#}
+<br/>
+<br/>
+  <div class=" container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="carousel slide" id="carousel-739989">
+				<ol class="carousel-indicators">
+					<li class="active" data-slide-to="0" data-target="#carousel-739989">
+					</li>
+					<li data-slide-to="1" data-target="#carousel-739989">
+					</li>
+					<li data-slide-to="2" data-target="#carousel-739989">
+					</li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="item active">
+                        <img alt="" src="http://www.berneroberland.com/wp-content/uploads/2016/11/Skin-Health-Enhancing-Formula.jpg" />
+
+{#                        	<img alt="" src=/static/image/5622b1.jpg" />#}
+						<div class="carousel-caption">
+							<h4>
+								First Thumbnail label
+							</h4>
+							<p>
+								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+							</p>
+						</div>
+					</div>
+					<div class="item">
+						 <img alt="" src="/static/image/5622b1.jpg" />
+						<div class="carousel-caption">
+							<h4>
+								Second Thumbnail label
+							</h4>
+							<p>
+								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+							</p>
+						</div>
+					</div>
+					<div class="item">
+						<img alt="" src="http://www.berneroberland.com/wp-content/uploads/2016/11/healthy-skin.jpg" />
+						<div class="carousel-caption">
+							<h4>
+								Be your good friends
+							</h4>
+							<p>
+								Give you a health skin for your life.
+                               Own a better life.
+							</p>
+						</div>
+					</div>
+				</div> <a class="left carousel-control" href="#carousel-739989" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-739989" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</nav>
+</body>
+</html>
