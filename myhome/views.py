@@ -74,7 +74,7 @@ class History_TvalueView(generic.ListView):
     context_object_name = "Notification"
 
     def get_queryset(self):
-        alldata = Seneor.objects.all().order_by('-time')[:100]
+        daydata = Seneor.objects.all().order_by('-time')[:100]
         data = []
         # for _ in alldata:
         #     json_data = {
@@ -90,7 +90,7 @@ class History_TvalueView(generic.ListView):
         total_value = 0
         total_val = 0
         time_hour = 1
-        for _ in alldata:
+        for _ in daydata:
             total_val = total_val + _.Tvalue
             if count % 10!=0:
                 total_value = total_value + _.Tvalue
@@ -121,14 +121,14 @@ class History_UvalueView(generic.ListView):
     template_name = "historyofUvalue.html"
     context_object_name = "Notification"
     def get_queryset(self):
-        alldata = Seneor.objects.all().order_by('-time')[:100]
+        daydata = Seneor.objects.all().order_by('-time')[:100]
         data = []
         total_val = 0
         count = 1
         average_value = 0
         total_value = 0
         time_hour = 1
-        for _ in alldata:
+        for _ in daydata:
             total_val = total_val + _.Hvalue
             if count % 10!=0:
                 total_value = total_value + _.Uvalue
@@ -160,14 +160,14 @@ class History_HvalueView(generic.ListView):
     context_object_name = "Notification"
 
     def get_queryset(request):
-        alldata = Seneor.objects.all().order_by('-time')[:100]
+        daydata = Seneor.objects.all().order_by('-time')[:100]
         data = []
         count = 1
         average_value = 0
         total_value = 0
         time_hour = 1
         total_val = 0
-        for _ in alldata:
+        for _ in daydata:
             total_val = total_val + _.Hvalue
             if count % 10 != 0:
                 total_value = total_value + _.Hvalue
