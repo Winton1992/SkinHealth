@@ -1,12 +1,130 @@
 {% extends 'base.html' %}
-{% block Body %}
-    <div class="container">
-        <div class="page-header">
-            <h1>Notifications</h1>
-        </div>
-      <!-- Main component for a primary marketing message or call to action -->
-        {% include 'notifications.html' %}
-    </div>
-    
+{% block main %}
+    	<!--content-->
+	<div class="content">
+		<div class="about">
+			<div class="container">
+				<h3>You can get your skin trip now!</h3>
+				<div class="about-in">
+					<div class="col-md-8 in-profile">
+						<h4>Your Advice</h4>
+						<div class="our-grid">
+							<div class="view effect our-para">
+						<a href="#" class="mask">
+				<img src="/static/image/docotor.jpg" alt="image" class="img-responsive zoom-img">
+				</a>
+					</div>
+							<div class="our-head">
+							<h6 ><a href="#">Give your most personal and professional skin advice</a></h6>
+{#							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nisi sem, vestibulum ac lobortis quis, aliquet in metus. Suspendi sse a nibh id eros consectetur laoreet. Etiam viverra auctor orci, eu mattis ipsum rutrum nec.</p>#}
+{#							<p>Etortor tortor in turpis. Proin mauris nulla, rutrum aliquet arcu vel, porttitor varius dolor. Phasellus vitae tincidunt orci, et faucibus eros. Sed dolor sapien, pharetra placerat feugiat.</p>#}
+ <br/>
+                                <br/>
 
+                                <form> <font size="3"> <h1>{{ hotNote }}</h1></font></form>
+							</div>
+						<div class="clearfix"> </div>
+						</div>
+					</div>
+					<div class="col-md-4 in-profile">
+
+
+
+					<div class="col-in-about">
+						<img src="/static/image/T.jpeg" alt="temperature" height="50" width="50"><br/>
+						<div class="left-sit">
+							<h6><a href="#">Temperature:</a></h6>
+							<h1>{{ data.Tvalue }} ℃</h1>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="col-in-about">
+						<img src="/static/image/UV.jpeg" alt="temperature" height="50" width="50"><br/>
+						<div class="left-sit">
+							<h6><a href="#">UV:</a></h6>
+							<h1>{{ data.Uvalue }} Index</h1> 
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					<div class="col-in-about">
+						<img src="/static/image/H.jpeg" alt="temperature" height="50" width="50"><br/>
+						<div class="left-sit">
+							<h6><a href="#">Humidity:</a></h6>
+							<h1>{{ data.Hvalue }} %</h1> 
+						</div>
+
+						<div class="clearfix">
+                            <form action="{% url 'myhome:connection' %}" method="post"> 
+                            {% csrf_token %}
+                                <button class="btn btn-primary btn-lg type="submit" name="submit" value='connection'>Detect Environment</button> 
+                            </form> 
+					    </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="content-team team-set">
+			  <h4> You need to know</h4>
+				<div class="team_about">
+					<div class="col-sm-3 team-top ">
+					<a href="#"><img class="img-responsive" src="/static/image/doctor2.png" alt="" /></a>
+						<h6>Doctor Joe</h6>
+						<p>Skin health professor</p>
+					</div>
+					<div class="col-sm-3 team-top">
+						<a href="#"><img class="img-responsive" src="/static/imagep2.jpg" alt="" /></a>
+						<h6>What is the UV Index?</h6>
+						<p>The UV Index is a simple and informative way of describing the daily danger of solar UV radiation intensity. Each point on the Index scale is equivalent to 25 milliWatts/square metre of UV radiation.</p>
+					</div>
+					<div class="col-sm-3 team-top">
+						<a href="#"><img class="img-responsive" src="/static/imagep3.jpg" alt="" /></a>
+						<h6>What are the sun protection times?</h6>
+						<p>The sun protection times in the forecast are the times of the day when sun protection measures are recommended such as slip, slop, slap, seek and slide. This is the time of the day when the UV Index is above 3 in clear sky conditions.</p>
+					</div>
+					<div class="col-sm-3 team-top">
+						<a href="#"><img class="img-responsive" src="/static/image/doctor3.png" alt="" /></a>
+						<h6>Doctor Li </h6>
+						<p>Skin health professor</p>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+			</div>
+			<div class="about-bottom">
+				<div class="col-sm-7 our-mission">
+					<h4>5 steps to be SunSmart</h4>
+					<h6><a href="#">Cancer Council Australia recommends Australians take five steps to protect against sun damage when the SunSmart UV Alert indicates the UV Index is at 3 or above:</a></h6>
+					<p>1.Slip on some sun-protective clothing - that covers as much skin as possible</p>
+                    <p>2.Slop on SPF30+ sunscreen - make sure it is broad spectrum and water resistant. Put it on 20 minutes before you go outdoors and every two hours afterwards. Sunscreen should never be used to extend the time you spend in the sun.</p>
+                    <p>3.Slap on a hat - that protects your face, head, neck and ears</p>
+                    <p>4.Seek shade</p>
+                    <p>5.Slide on some sunglasses - make sure they meet Australian Standards</p>
+				</div>
+				<div class="col-sm-5 about_img">
+				<div class="view effect">
+				<a href="#" class="mask">
+				<img src="/static/image/doctor4.jpg" alt="image" class="img-responsive zoom-img">
+				</a>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	</div>
 {% endblock %}
+
+
+
+    <form action="{% url 'myhome:connection' %}" method="post"> 
+            {% csrf_token %}
+            <button class="btn btn-primary btn-lg type="submit" name="submit" value='connection'>Detect Environment</button> 
+    </form> 
+            <h1>{{ data.Uvalue }}</h1> 
+            <h1>{{ data.Hvalue }}</h1> 
+            <h1>{{ data.Tvalue }}</h1> 
+
+    <h1>{{ hotNote }}</h1>
+    <form action="{% url 'myhome:readlong' %}" method="post"> 
+        {% csrf_token %} {#    <input id="submit" type="button" value="Click" />#} 
+        <h1>{{ Loding }}</h1> 
+        <button class="btn btn-primary btn-lg type="submit" name="submit" value='connection'>Continuously monitor</button> 
+    </form> 

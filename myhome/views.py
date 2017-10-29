@@ -30,22 +30,58 @@ def ArdunioConnection(request):
      while 1:
          arduinoData = ser.readline().decode('ascii')
          print(arduinoData)
-         data_display = arduinoData.split(',')
-         data_display = arduinoData.strip('\n').strip('\r')
+         data_display = arduinoData.replace(',', '').strip('\n').strip('\r')
          print(data_display)
          Tvalue = float(data_display[:5])
-         Hvalue = float(data_display[6:11])
-         Uvalue = int(data_display[12:])
+         Hvalue = float(data_display[5:10])
+         Uvalue = int(data_display[10:])
          print(Tvalue)
          print(Hvalue)
          print(Uvalue)
 
          data = Seneor.objects.create(Tvalue=Tvalue, Uvalue=Uvalue, Hvalue=Hvalue)
          data.save()
-         context = {'data': data}
 
-     return render(request, 'myhome:connection', context)
+         if (Tvalue >= 20):
+             context = {'hotNote': 'too hot','data': data}
+             print(context['hotNote'])
 
+         break
+
+     ser.close()
+
+     return render(request, 'myhome.html', context)
+
+
+def ArdunioReadLong(request):
+
+     ser = serial.Serial("/dev/cu.usbmodem1411", baudrate=9600)
+
+     count = 0
+
+     while 1:
+         arduinoData = ser.readline().decode('ascii')
+         print(arduinoData)
+         data_display = arduinoData.replace(',', '').strip('\n').strip('\r')
+         print(data_display)
+         Tvalue = float(data_display[:5])
+         Hvalue = float(data_display[5:10])
+         Uvalue = int(data_display[10:])
+         print(Tvalue)
+         print(Hvalue)
+         print(Uvalue)
+
+         data = Seneor.objects.create(Tvalue=Tvalue, Uvalue=Uvalue, Hvalue=Hvalue)
+         data.save()
+
+         count = count + 1
+
+         if (count >= 2000):
+            context = {'Loding': 'You have read 10 groups of value'}
+            break
+     ser.close()
+
+     return render(request, 'myhome.html', context)
 
 # class IndexView(generic.ListView):
 #     template_name = "showdata.html"
@@ -53,20 +89,15 @@ def ArdunioConnection(request):
 #
 #     def get_queryset(self):
 #         return Seneor.objects.all().order_by('-time')[:1]
-class IndexView(generic.ListView):
-    template_name = "showdata.html"
-    context_object_name = "all_data"
+#
+#     def get_context_data(self, **kwargs):
+#         context = super(IndexView, self).get_context_data(**kwargs)
+#         alldata = Seneor.objects.all().order_by('-time')[:1]
+#         for _ in alldata:
+#             if  _.Hvalue > 20:
+#                context['Notification'] = "hot"
+#                return context
 
-    def get_queryset(self):
-        return Seneor.objects.all().order_by('-time')[:1]
-
-    def get_context_data(self, **kwargs):
-        context = super(IndexView, self).get_context_data(**kwargs)
-        alldata = Seneor.objects.all().order_by('-time')[:1]
-        for _ in alldata:
-            if  _.Hvalue > 20:
-               context['Notification'] = "hot"
-               return context
 
 
 class History_TvalueView(generic.ListView):
@@ -204,6 +235,7 @@ class UV_valueView(generic.ListView):
     def get_queryset(self):
         alldata = Seneor.objects.all().order_by('-time')[:100]
         return alldata
+
 
 
 

@@ -1,43 +1,26 @@
-{% extends 'base.html' %}
-{% block main %}
-    <div class="container">
-        <div class="page-header">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
 
-        </div>
-<h2>{{ Notification }}</h2>
-        {% if all_data %}
-        <ul>
-            {% for data in all_data %}
-
-
-
-                <h2>{{ data.Uvalue }}</h2>
-                <h2>{{ data.Hvalue }}</h2>
-                <h2>{{ data.Tvalue }}</h2>
-                <h2>{{ data.time }}</h2><br>
+    <form action="{% url 'myhome:connection' %}" method="post"> 
+            {% csrf_token %}
+            <button class="btn btn-primary btn-lg type="submit" name="submit" value='connection'>Detect Environment</button> 
+    </form> 
+            <h1>{{ data.Uvalue }}</h1> 
+            <h1>{{ data.Hvalue }}</h1> 
+            <h1>{{ data.Tvalue }}</h1> 
 
 
-            {% endfor %}
-        </ul>
-        {% else %}
-        <h3>You do not have any data</h3>
-        {% endif %}
-    </div>
-    <a class="btn btn-primary btn-lg" href="data" role="button" >Get Current Data</a>
-{#   <div>#}
-{#    {% if messages %}#}
-{#      <ul class="messages">#}
-{#    {% for message in messages %}#}
-{#    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>#}
-{#        {{ message }}#}
-{#    </li>#}
-{#    {% endfor %}#}
-{#    </ul>#}
-{#    {% endif %}#}
-{#</div>#}
-
-<h1>{{ Message }}</h1>
+    <form action="{% url 'myhome:readlong' %}" method="post"> 
+        {% csrf_token %} {#    <input id="submit" type="button" value="Click" />#} 
+        <h1>{{ Loding }}</h1> 
+        <button class="btn btn-primary btn-lg type="submit" name="submit" value='connection'>Continuously monitor</button> 
+    </form> 
 
 
-
-{% endblock %}
+</body>
+</html>

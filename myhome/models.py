@@ -8,10 +8,16 @@ class Notification(models.Model):
     title = models.CharField(max_length=50)
     message = models.CharField(max_length=500)
 
+    def __str__(self):  # __unicode__ on Python 2
+        return self.name
+
 
 class Seneor(models.Model):
     Tvalue = models.FloatField()
     Hvalue = models.FloatField()
     Uvalue = models.IntegerField(default=0)
     time = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):  # __unicode__ on Python 2
+        return self.name
 

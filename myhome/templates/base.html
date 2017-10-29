@@ -1,67 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Skin Health</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="#" />
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
+<title>About</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Trendz Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="/static/css/bootstrapn.css" rel='stylesheet' type='text/css' />
+<link href="/static/css/stylenew.css" rel='stylesheet' type='text/css' />
+<script src="/static/js/jquery-1.11.1.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<!--fonts-->
+<link href='#css?family=Raleway:400,200,600,800,900,500' rel='stylesheet' type='text/css'>
+<link href='#css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <style>
         {% block style %}
         {% endblock %}
     </style>
-
-
+<!--//fonts-->
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href={% url "myhome:myhome" %}>Skin Health Assistant</a>
-        </div>
+<!--header-->
+<!--banner-->
+	<div class="banner" style="background-color:#6CB6B6;"> </div>
+	<!---->
+	<div class="header">
+		<div class="header-top">
+			<div class="logo">
+				<h1><a href="index.html">skinhealth</a></h1>
+			</div>
+			<div class="top-nav">
+			        <span class="menu"> </span>
+					<ul>
+						<li ><a href="index.html" class="scroll" >HOME</a></li>
+						<li class="active"><a href="about.html" class="scroll" data-hover="ABOUT">ABOUT</a></li>
+						<li><a href="services.html" class="scroll" data-hover="SERVICES">SERVICES</a></li>
+						<li><a href="404.html" class="scroll" data-hover="BLOG">BLOG</a></li>
+						<li><a href="contact.html" class="scroll" data-hover="CONTACT">CONTACT</a></li>
+					</ul>
+					<!--script-->
+				<script>
+					$("span.menu").click(function(){
+						$(".top-nav ul").slideToggle(500, function(){
+						});
+					});
+			</script>
+				</div>
+				<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!--content-->
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li><a href="#">UV</a></li>
-                <li><a href="#">Humidity</a></li>
-                <li><a href="#">Temperature</a></li>
-            </ul>
+        <br/>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Logout</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+ {% block main %}
 
-{% block main %}p
+
 {% endblock %}
 
 <script>
     {% block script %}{% endblock %}
 </script>
 
+	<!--footer-->
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+	<div class="footer">
+		<div class="container">
+					 <ul class="social-ic-icons">
+						<li class="twitter"><a href="#"><span> </span></a></li>
+						<li class="facebook"><a href="#"><span> </span></a></li>
+						<li class="gmail"><a href="#"><span> </span></a></li>
+					</ul>
+					<p class="footer-grid">Copyright &copy; 2017.Elec5622 Group4 All rights reserved.<a target="_blank" href="http://www.moobnn.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a> - Skin health<a href="http://www.moobnn.com/" target="_blank" title="模板在线">模板在线</a> <a href="http://guantaow.taobao.com" target="_blank">11</a></p>
+		 </div>
+	</div>
 
 
 </body>
 </html>
-
-
-
-
