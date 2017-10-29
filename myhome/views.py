@@ -12,6 +12,12 @@ import json
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
+from django.shortcuts import render, redirect
+from django.http import Http404, HttpResponseRedirect, HttpResponse
+from django.contrib.auth import authenticate, login, logout
+from .models import UserProfile
+from .forms import  RegisterForm, UserInfoForm
+
 
 # Create your views here.
 class MyHomeListView(LoginRequiredMixin, ListView):
@@ -42,9 +48,28 @@ def ArdunioConnection(request):
          data = Seneor.objects.create(Tvalue=Tvalue, Uvalue=Uvalue, Hvalue=Hvalue)
          data.save()
 
-         if (Tvalue >= 20):
-             context = {'hotNote': 'too hot','data': data}
-             print(context['hotNote'])
+         if (Uvalue <= 2):
+             if(Hvalue <=40):
+                 context = {'UVNote': 'UV value is low. You can go out and have fun!',
+                            'HNote': 'Humidity value is too low for your skin',
+                            'data': data}
+             elif(Hvalue >40 and Hvalue<=60):
+                 context = {'UVNote': 'UV value is low. You can go out and have fun!',
+                            'HNote': 'This is moderate humidity level for your skin. Enjoy your environment!',
+                            'data': data}
+
+         elif(Uvalue > 2 and Uvalue <= 5):
+             context = {'UVNote': 'UV value is moderate. You can go out and fun! But you’d better to use sunscreen(SPF30) or sunglasses to protect your skin from aging causing by UV.',
+                           'data': data}
+         elif(Uvalue > 5 and Uvalue <= 7):
+             context = {'UVNote': 'UV value is high. Please use appropriate protection like sunscreen (SPF 50++), sunglasses, sun-protective clothing or slap.',
+                        'data': data}
+         elif(Uvalue > 8 and Uvalue <= 10):
+             context = {'UVNote': 'UV value is very high. You’d better stay indoors or use appropriate protection like sunscreen (SPF 50+++), sunglasses, sun-protective clothing or slap.',
+                        'data': data}
+         else:
+            context = {'UVNote': 'UV value is extremely strong. You should better stay indoors. The sun ultraviolet (UV) radiation is the major cause of skin cancer and cause of skin aging.',
+                        'data': data}
 
          break
 
@@ -237,6 +262,68 @@ class UV_valueView(generic.ListView):
         return alldata
 
 
+
+
+def user_login(request):
+    if request.method == "POST":
+        user_name = request.POST.get("username","")
+        pass_word = request.POST.get("password","")
+        user = authenticate(username=user_name, password=pass_word)
+        if user is not None:
+            my_login(request, user)
+            return render(request, "showdata.html")
+        else:
+            context = {'login_err': 'Username or Password is wrong!'}
+            return render(request, "login.html", context)
+    elif request.method == "GET":
+        return render(request, "login.html",{})
+
+
+def my_login(request, user):
+    login(request, user)
+    request.session['user_id'] = user.id
+
+
+def user_logout(request):
+    my_logout(request)
+    return HttpResponseRedirect("/myhome")
+
+
+def my_logout(request):
+    logout(request)
+    request.session['user_id'] = ''
+
+
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            my_register(request, username, password)
+            return HttpResponseRedirect("/myhome")
+    else:
+        form = RegisterForm()
+    return render(request, 'register.html', context={'form': form})
+
+
+def my_register(request, username, password):
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        my_login(request, user)
+
+def Userinfo(request):
+    return  render(request, 'user_profile.html',{})
+
+def editprofile(request):
+    user_info_form = UserInfoForm(request.POST, instance=request.user)
+    if user_info_form.is_valid():
+        user_info_form.save()
+        return HttpResponseRedirect("/myhome/info")
+    else:
+        user_info_form = UserInfoForm()
+    return render(request, 'edit_profile.html', context={'user_info_form': user_info_form})
 
 
 

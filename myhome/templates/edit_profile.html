@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block main %}
+<!--header-->
+
+<div class="container">
+	<div class="row">
+
+
+
+       <div class="col-md-7 ">
+
+<div class="panel panel-default">
+  <div class="panel-heading">  <h4 >User Profile</h4></div>
+   <div class="panel-body">
+
+    <div class="box box-info">
+
+            <div class="box-body">
+                     <div class="col-sm-6">
+                     <div  align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
+
+
+
+                     </div>
+
+              <br>
+
+              <!-- /input-group -->
+            </div>
+
+            <div class="clearfix"></div>
+            <hr style="margin:5px 0 5px 0;">
+
+<form class="form" action="{% url 'myhome:edit_profile' %}" method="post">
+ {% csrf_token %}
+  {% for field in user_info_form %}
+
+   <h2> {{ field.label_tag }}
+    {{ field }}</h2>
+    <h2>{{ field.errors }}</h2>
+    {% if field.help_text %}
+        <p class="help text-small text-muted">{{ field.help_text|safe }}</p>
+    {% endif %}
+      <br>
+  {% endfor %}
+  <button type="submit" class="btn btn-primary btn-lg">Confirm</button>
+</form>
+
+            </div>
+    </div>
+   </div>
+</div>
+       </div>
+    </div>
+
+</div>
+    <script>
+              $(function() {
+    $('#profile-image1').on('click', function() {
+        $('#profile-image-upload').click();
+    });
+});
+              </script>
+{% endblock %}

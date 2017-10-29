@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>About</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Trendz Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="/static/css/bootstrapn.css" rel='stylesheet' type='text/css' />
+<link href="/static/css/stylenew.css" rel='stylesheet' type='text/css' />
+<script src="/static/js/jquery-1.11.1.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<!--fonts-->
+<link href='#css?family=Raleway:400,200,600,800,900,500' rel='stylesheet' type='text/css'>
+<link href='#css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <style>
+        {% block style %}
+        {% endblock %}
+    </style>
+<!--//fonts-->
+</head>
+<body>
+<!--header-->
+<!--banner-->
+	<div class="banner" style="background-color:#6CB6B6;"> </div>
+	<!---->
+	<div class="header">
+		<div class="header-top">
+			<div class="logo">
+				<h1><a href="index.html">skinhealth</a></h1>
+			</div>
+
+				<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!--content-->
+
+        <br/>
+
+
+<form class="form" action="{% url 'myhome:register' %}" method="post">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-6 my-4">
+     <h2 class="form-signin-heading">Please sign up</h2>
+      <div class="form-group">
+        <label for="inputEmail">Email</label>
+        <input type="text" id="inputEmail" name="email" class="form-control"
+               data-toggle="tooltip" data-placement="right" data-html="true"
+               title="Required">
+      </div>
+      <div class="form-group">
+        <label for="inputUsername">Username</label>
+        <input type="text" id="inputUsername" name="username" class="form-control"
+               data-toggle="tooltip" data-placement="right" data-html="true"
+               title="Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.">
+      </div>
+      <div class="form-group">
+        <label for="inputPassword">Password</label>
+        <input type="password" id="inputPassword" name="password1" class="form-control"
+               data-toggle="tooltip" data-placement="right" data-html="true"
+               title="1. Your password can&#39;t be too similar to your other personal information.<br>
+               2. Your password contain at least 8 characters.<br>
+               3. Your password can&#39;t be a commonly used password.<br>
+               4. Your password can&#39;t be entirely numeric.">
+      </div>
+      <div class="form-group">
+        <label for="inputPasswordConfirm">Password confirmation</label>
+        <input type="password" id="inputPasswordConfirm" name="password2" class="form-control"
+               data-toggle="tooltip" data-placement="right" data-html="true"
+               title="Enter the same password as before, for verification.">
+      </div>
+      {% if form.errors %}
+      <div class="form-group">
+        <label class="form-control alert alert-warning">Register Errors: <br>{{ form.errors }}</label>
+      </div>
+      {% endif %}
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">SignUp</button>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</form>
+
+</body>
+</html>

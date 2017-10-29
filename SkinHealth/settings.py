@@ -37,10 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'authentication.apps.AuthenticationConfig',
-    'myhome.apps.MyHomeConfig',
-    'registration',
-    'Data'
+    'myhome',
+    'Data',
 ]
 
 MIDDLEWARE = [
@@ -96,7 +94,7 @@ DATABASES = {
 #             'PORT': '3306',
 #         }
 # }
-
+#
 'default': {
             'ENGINE': 'django.db.backends.mysql',
             'NAME': 'elec5622sydney',
@@ -126,7 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+AUTH_USER_MODEL = 'myhome.UserProfile'
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 

@@ -14,4 +14,10 @@ urlpatterns = [
     # url(r'^currentHvalue', views.Current_Humidity_valueVieww.as_view(), name='currentHvalue'),
     # url(r'^currentTvalue', views.Current_Temperature_valueView.as_view(), name='currentTvalue'),
     # url(r'^currentUvalue', views.Current_UV_valueView.as_view(), name='currentUvalue'),
+
+    url(r'^login/$', views.user_login, name="login"),
+    url(r'^logout/$', views.user_logout, name="logout"),
+    url(r'^register/', views.register, name='register'),
+    url(r'^info/', views.Userinfo, name='info'),
+    url(r'^edit_profile/', views.editprofile, name='edit_profile'),
 ]

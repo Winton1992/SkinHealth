@@ -26,9 +26,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^$', views.MyHomeListView.as_view()),
     url(r'^admin/', admin.site.urls),
-    url(r'^auth/', include('authentication.urls', namespace='authentication')),
     url(r'^myhome/', include('myhome.urls', namespace='myhome')),
-    url(r'^registration/', include('registration.urls', namespace='registration')),
     url(r'^Data/history/$', DataHistoryView.as_view(), name='DataHistory_Tvalue'),
     # Raw Data API
     url(r'^api/Data/history/$', APIDataHistoryView.as_view(), name='api-data-history'),

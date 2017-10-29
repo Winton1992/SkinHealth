@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>About</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Trendz Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="/static/css/bootstrapn.css" rel='stylesheet' type='text/css' />
+<link href="/static/css/stylenew.css" rel='stylesheet' type='text/css' />
+<script src="/static/js/jquery-1.11.1.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<!--fonts-->
+<link href='#css?family=Raleway:400,200,600,800,900,500' rel='stylesheet' type='text/css'>
+<link href='#css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <style>
+        {% block style %}
+        {% endblock %}
+    </style>
+<!--//fonts-->
+</head>
+<body>
+<!--header-->
+<!--banner-->
+	<div class="banner" style="background-color:#6CB6B6;"> </div>
+	<!---->
+	<div class="header">
+		<div class="header-top">
+			<div class="logo">
+				<h1><a href="index.html">skinhealth</a></h1>
+			</div>
+
+				<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!--content-->
+
+        <br/>
+
+<form class="form-signin" role="form" method="post" action="{% url 'myhome:login' %}">
+  {% csrf_token %}
+  <div class="row mt-4">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <h2 class="form-signin-heading">Please sign in</h2>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" class="form-control" required autofocus>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" class="form-control" required>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-3"></div>
+{#    <div class="col-md-3">#}
+{#      <span><a href="{% url 'password_reset' %}">Forget password？</a></span>#}
+{#    </div>#}
+    <div class="col-md-3 text-right">
+      <button class="btn btn-primary" type="submit">Sign in</button>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      {% if login_err %}
+      <div class="form-group">
+        <label class="form-control alert alert-warning">Warning: <br>{{ login_err }}</label>
+      </div>
+      {% endif %}
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</form>
+
+
+<script>
+    {% block script %}{% endblock %}
+</script>
+
+	<!--footer-->
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+	<div class="footer">
+		<div class="container">
+					 <ul class="social-ic-icons">
+						<li class="twitter"><a href="#"><span> </span></a></li>
+						<li class="facebook"><a href="#"><span> </span></a></li>
+						<li class="gmail"><a href="#"><span> </span></a></li>
+					</ul>
+					<p class="footer-grid">Copyright &copy; 2017.Elec5622 Group4 All rights reserved.<a target="_blank" href="http://www.moobnn.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a> - Skin health<a href="http://www.moobnn.com/" target="_blank" title="模板在线">模板在线</a> <a href="http://guantaow.taobao.com" target="_blank">11</a></p>
+		 </div>
+	</div>
+
+
+</body>
+</html>
