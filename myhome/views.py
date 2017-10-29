@@ -74,7 +74,7 @@ class History_TvalueView(generic.ListView):
     context_object_name = "Notification"
 
     def get_queryset(self):
-        daydata = Seneor.objects.all().order_by('-time')[:100]
+        daydata = Seneor.objects.all().order_by('-time')[:240]
         data = []
         # for _ in alldata:
         #     json_data = {
@@ -121,7 +121,7 @@ class History_UvalueView(generic.ListView):
     template_name = "historyofUvalue.html"
     context_object_name = "Notification"
     def get_queryset(self):
-        daydata = Seneor.objects.all().order_by('-time')[:100]
+        daydata = Seneor.objects.all().order_by('-time')[:240]
         data = []
         total_val = 0
         count = 1
@@ -160,12 +160,13 @@ class History_HvalueView(generic.ListView):
     context_object_name = "Notification"
 
     def get_queryset(request):
-        daydata = Seneor.objects.all().order_by('-time')[:100]
+        daydata = Seneor.objects.all().order_by('-time')[:240]
+        weekdata = Seneor.objects.all().order_by('-time')[:240]
         data = []
         count = 1
         average_value = 0
         total_value = 0
-        time_hour = 1
+        hour = 1
         total_val = 0
         for _ in daydata:
             total_val = total_val + _.Hvalue
@@ -179,12 +180,12 @@ class History_HvalueView(generic.ListView):
                 print(total_value)
                 print("average:", average_value)
                 json_data = {
-                    "id": time_hour,
+                    "id": hour,
                     "Hvalue": average_value
                 }
                 print(average_value)
                 data.insert(0, json_data)
-                time_hour = time_hour + 1
+                hour = hour + 1
                 total_value = 0
 
 
@@ -196,10 +197,29 @@ class History_HvalueView(generic.ListView):
              Notification = "Warning: The Humid value in your environment is too high."
              return Notification
 
-
-
-
-
+        #week data
+        # for _ in weekdata:
+        #     total_val = total_val + _.Hvalue
+        #     if count % 10 != 0:
+        #         total_value = total_value + _.Hvalue
+        #         count = count + 1
+        #
+        #     else:
+        #         count = 1
+        #         average_value = total_value / 10
+        #         print(total_value)
+        #         print("average:", average_value)
+        #         json_data = {
+        #             "id": hour,
+        #             "Hvalue": average_value
+        #         }
+        #         print(average_value)
+        #         data.insert(0, json_data)
+        #         hour = hour + 1
+        #         total_value = 0
+        #
+        # with open('static/json/week_data.json', 'w') as outfile:
+        #     json.dump(data, outfile)
 
 class UV_valueView(generic.ListView):
     template_name = "UV.html"

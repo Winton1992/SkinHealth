@@ -87,25 +87,25 @@ DATABASES = {
     #         'HOST': 'localhost',
     #         'PORT': '3306',
     #     }
-'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'elec5622',
-            'USER': 'root',
-            'PASSWORD': 'admin123',
-            'HOST': 'elec5622.cybstkdmoonr.us-east-2.rds.amazonaws.com',
-            'PORT': '3306',
-        }
-}
-
 # 'default': {
 #             'ENGINE': 'django.db.backends.mysql',
-#             'NAME': 'elec5622sydney',
+#             'NAME': 'elec5622',
 #             'USER': 'root',
 #             'PASSWORD': 'admin123',
-#             'HOST': 'elec5622sydney.cxfybvg2st2x.ap-southeast-2.rds.amazonaws.com',
+#             'HOST': 'elec5622.cybstkdmoonr.us-east-2.rds.amazonaws.com',
 #             'PORT': '3306',
 #         }
 # }
+
+'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'elec5622sydney',
+            'USER': 'root',
+            'PASSWORD': 'admin123',
+            'HOST': 'elec5622sydney.cxfybvg2st2x.ap-southeast-2.rds.amazonaws.com',
+            'PORT': '3306',
+        }
+}
 
 
 # Password validation
