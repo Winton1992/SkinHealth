@@ -197,29 +197,7 @@ class History_HvalueView(generic.ListView):
              Notification = "Warning: The Humid value in your environment is too high."
              return Notification
 
-        #week data
-        # for _ in weekdata:
-        #     total_val = total_val + _.Hvalue
-        #     if count % 10 != 0:
-        #         total_value = total_value + _.Hvalue
-        #         count = count + 1
-        #
-        #     else:
-        #         count = 1
-        #         average_value = total_value / 10
-        #         print(total_value)
-        #         print("average:", average_value)
-        #         json_data = {
-        #             "id": hour,
-        #             "Hvalue": average_value
-        #         }
-        #         print(average_value)
-        #         data.insert(0, json_data)
-        #         hour = hour + 1
-        #         total_value = 0
-        #
-        # with open('static/json/week_data.json', 'w') as outfile:
-        #     json.dump(data, outfile)
+      
 
 class UV_valueView(generic.ListView):
     template_name = "UV.html"
