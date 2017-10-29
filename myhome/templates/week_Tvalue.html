@@ -27,12 +27,12 @@
         <svg width="800" height="430" id="chart" ></svg>
     </div>
 
-    <div class="col-xs-4">
+   <div class="col-xs-4">
          <div class="btn-group" role="group" aria-label="...">
          <a type="button" class="btn btn-default" href="{% url "myhome:historyofTvalue" %}">Day</a>
          <a type="button" class="btn btn-default" href="{% url "myhome:week_Tvalue" %}">Week</a>
     </div>
-
+            
          <img src="/static/image/advice.png" height="150" width="200">
          <textarea cols="50" rows="10" wrap="hard" readonly="yes">{{ Notification }} </textarea>
     </div>
@@ -85,7 +85,7 @@
 
 // load the data
                 d3.json(endpoint, function(error, data) {
-
+                    
                 function draw_graph(){
                     data.forEach(function(d) {
                         d.id = d.id;
@@ -106,7 +106,7 @@
                         .attr("dx", "-.8em")
                         .attr("dy", "-.55em")
                         .attr("transform", "rotate(-90)" );
-
+                  
                      svg.append("g")
                         .attr("class", "y axis")
                         .call(yAxis)
@@ -133,7 +133,7 @@
                         .attr("dy", ".71em")
                         .style("font-size","15px")
                         .style("text-anchor", "end")
-                        .text("Temperature Value");
+                        .text("Temperature Value (Week)");
 
                     svg.append("g")
                         .attr("class", "y axis")
@@ -147,7 +147,7 @@
                         .attr("dy", ".71em")
                         .style("font-size","15px")
                         .style("text-anchor", "end")
-                        .text("Past 24 Hours");
+                        .text("Past 7 Days");
 
 
                     // Add bar chart
@@ -162,8 +162,8 @@
                      };
 
                      draw_graph.call(svg, {
-                    data:data
-                  });
+                      data:data
+                    });
 
                 });
 

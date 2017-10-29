@@ -27,21 +27,14 @@
         <svg width="800" height="430" id="chart" ></svg>
     </div>
 
-    <div class="col-xs-4">
-        <div style="padding-left: 10px; width: 200px;">
-            <h5>Display</h5>
-            <form id="form1">
-                <select class="form-control" name= "Filter" id="select1" >
-                    <option  type="Day" >Day</option>
-                    <option type="Week" >Week</option>
-                </select>
-            </form>
-            
-            
-               <img src="/static/image/advice.png" height="150" width="200">
-               <textarea cols="50" rows="10" wrap="hard" readonly="yes">{{ Notification }} </textarea>
-          
-        </div>
+     <div class="col-xs-4">
+         <div class="btn-group" role="group" aria-label="...">
+         <a type="button" class="btn btn-default" href="{% url "myhome:historyofHvalue" %}">Day</a>
+         <a type="button" class="btn btn-default" href="{% url "myhome:week_Hvalue" %}">Week</a>
+    </div>
+
+         <img src="/static/image/advice.png" height="150" width="200">
+         <textarea cols="50" rows="10" wrap="hard" readonly="yes">{{ Notification }} </textarea>
     </div>
 
 {% endblock %}
@@ -93,6 +86,7 @@
                 // load the data
                 d3.json(endpoint, function(error, data) {
 
+                  function draw_graph(){
                     data.forEach(function(d) {
                         d.id = d.id;
                         d.Tvalue = +d.Tvalue;
@@ -164,10 +158,12 @@
                         .attr("width", x.rangeBand())
                         .attr("y", function(d) { return y(d.Hvalue); })
                         .attr("height", function(d) { return height - y(d.Hvalue); });
+                    };
 
+                    draw_graph.call(svg, {
+                    data:data
+                  });
                 });
-
-
             }});
     {% endblock %}
 </script>

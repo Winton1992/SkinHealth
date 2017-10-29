@@ -178,135 +178,6 @@ def ArdunioReadLong(request):
 
 
 
-class History_TvalueView(generic.ListView):
-    template_name = "historyofTvalue.html"
-    context_object_name = "Notification"
-
-    def get_queryset(self):
-        daydata = Seneor.objects.all().order_by('-time')[:240]
-        data = []
-        # for _ in alldata:
-        #     json_data = {
-        #         "id": _.id,
-        #         "Tvalue":_.Tvalue
-        #     }
-        #
-        #     data.insert(0,json_data)
-        #
-        # print(data)
-        count = 1
-        average_value = 0
-        total_value = 0
-        total_val = 0
-        time_hour = 1
-        for _ in daydata:
-            total_val = total_val + _.Tvalue
-            if count % 10!=0:
-                total_value = total_value + _.Tvalue
-                count = count + 1
-
-            else:
-                count = 1
-                average_value = total_value/10
-                print(total_value)
-                print("average:", average_value)
-                json_data = {
-                    "id": time_hour,
-                    "Tvalue": average_value
-                }
-                print(average_value)
-                data.insert(0, json_data)
-                time_hour = time_hour + 1
-                total_value = 0
-        with open('static/json/data.json', 'w') as outfile:
-            json.dump(data, outfile)
-
-        if total_val / 10 > 20:
-             Notification = "Warning: The temperature is too hign."
-             return Notification
-
-
-class History_UvalueView(generic.ListView):
-    template_name = "historyofUvalue.html"
-    context_object_name = "Notification"
-    def get_queryset(self):
-        daydata = Seneor.objects.all().order_by('-time')[:240]
-        data = []
-        total_val = 0
-        count = 1
-        average_value = 0
-        total_value = 0
-        time_hour = 1
-        for _ in daydata:
-            total_val = total_val + _.Hvalue
-            if count % 10!=0:
-                total_value = total_value + _.Uvalue
-                count = count + 1
-
-            else:
-                count = 1
-                average_value = total_value/10
-                print(total_value)
-                print("average:", average_value)
-                json_data = {
-                    "id": time_hour,
-                    "Uvalue": average_value
-                }
-                print(average_value)
-                data.insert(0, json_data)
-                time_hour = time_hour + 1
-                total_value = 0
-        with open('static/json/data.json', 'w') as outfile:
-            json.dump(data, outfile)
-
-        if total_val / 10 > 50:
-             Notification = "Warning: You were exposed under high UV value."
-             return Notification
-
-
-class History_HvalueView(generic.ListView):
-    template_name = "historyofHvalue.html"
-    context_object_name = "Notification"
-
-    def get_queryset(request):
-        daydata = Seneor.objects.all().order_by('-time')[:240]
-        weekdata = Seneor.objects.all().order_by('-time')[:240]
-        data = []
-        count = 1
-        average_value = 0
-        total_value = 0
-        hour = 1
-        total_val = 0
-        for _ in daydata:
-            total_val = total_val + _.Hvalue
-            if count % 10 != 0:
-                total_value = total_value + _.Hvalue
-                count = count + 1
-
-            else:
-                count = 1
-                average_value = total_value / 10
-                print(total_value)
-                print("average:", average_value)
-                json_data = {
-                    "id": hour,
-                    "Hvalue": average_value
-                }
-                print(average_value)
-                data.insert(0, json_data)
-                hour = hour + 1
-                total_value = 0
-
-
-        with open('static/json/data.json', 'w') as outfile:
-            json.dump(data, outfile)
-
-
-        if total_val / 10 > 50:
-             Notification = "Warning: The Humid value in your environment is too high."
-             return Notification
-
-      
 
 class UV_valueView(generic.ListView):
     template_name = "UV.html"
@@ -380,4 +251,295 @@ def editprofile(request):
 
 
 
+#winton
+class History_TvalueView(generic.ListView):
+    template_name = "historyofTvalue.html"
+    context_object_name = "Notification"
 
+    def get_queryset(self):
+        daydata = Seneor.objects.all().order_by('-time')[:240]
+        mark_data = Seneor.objects.all().order_by('-time')[:5]
+        data = []
+        # for _ in alldata:
+        #     json_data = {
+        #         "id": _.id,
+        #         "Tvalue":_.Tvalue
+        #     }
+        #
+        #     data.insert(0,json_data)
+        #
+        # print(data)
+        count = 1
+        average_value = 0
+        total_value = 0
+        total_val = 0
+        time_hour = 1
+        for _ in daydata:
+            compare_data = Seneor.objects.all().order_by('-time')[:5]
+            if compare_data == mark_data:
+                break
+            else:
+                total_val = total_val + _.Tvalue
+                if count % 10!=0:
+                    total_value = total_value + _.Tvalue
+                    count = count + 1
+
+                else:
+                    count = 1
+                    average_value = total_value/10
+                    print(total_value)
+                    print("average:", average_value)
+                    json_data = {
+                        "id": time_hour,
+                        "Tvalue": average_value
+                    }
+                    print(average_value)
+                    data.insert(0, json_data)
+                    time_hour = time_hour + 1
+                    total_value = 0
+        with open('static/json/data.json', 'w') as outfile:
+            json.dump(data, outfile)
+
+        if total_val / 10 > 20:
+             Notification = "Warning: The temperature is too hign."
+             return Notification
+
+
+class History_UvalueView(generic.ListView):
+    template_name = "historyofUvalue.html"
+    context_object_name = "Notification"
+    def get_queryset(self):
+        daydata = Seneor.objects.all().order_by('-time')[:240]
+        mark_data = Seneor.objects.all().order_by('-time')[:5]
+        data = []
+        total_val = 0
+        count = 1
+        average_value = 0
+        total_value = 0
+        time_hour = 1
+        for _ in daydata:
+            compare_data = Seneor.objects.all().order_by('-time')[:5]
+            if compare_data == mark_data:
+                break
+            else:
+                total_val = total_val + _.Hvalue
+                if count % 10!=0:
+                    total_value = total_value + _.Uvalue
+                    count = count + 1
+
+                else:
+                    count = 1
+                    average_value = total_value/10
+                    print(total_value)
+                    print("average:", average_value)
+                    json_data = {
+                        "id": time_hour,
+                        "Uvalue": average_value
+                    }
+                    print(average_value)
+                    data.insert(0, json_data)
+                    time_hour = time_hour + 1
+                    total_value = 0
+        with open('static/json/data.json', 'w') as outfile:
+            json.dump(data, outfile)
+
+        if total_val / 10 > 50:
+             Notification = "Warning: You were exposed under high UV value."
+             return Notification
+
+
+class History_HvalueView(generic.ListView):
+    template_name = "historyofHvalue.html"
+    context_object_name = "Notification"
+
+    def get_queryset(self):
+        daydata = Seneor.objects.all().order_by('-time')[:240]
+        mark_data = Seneor.objects.all().order_by('-time')[:5]
+
+        data = []
+        count = 1
+        average_value = 0
+        total_value = 0
+        hour = 1
+        total_val = 0
+
+        for _ in daydata:
+            compare_data = Seneor.objects.all().order_by('-time')[:5]
+            if compare_data == mark_data:
+                break
+            else:
+               print("HAAAAAAAA")
+               total_val = total_val + _.Hvalue
+               if count % 10 != 0:
+                   total_value = total_value + _.Hvalue
+                   count = count + 1
+
+               else:
+                  count = 1
+                  average_value = total_value / 10
+                  json_data = {
+                     "id": hour,
+                     "Hvalue": average_value
+                  }
+                  data.insert(0, json_data)
+                  hour = hour + 1
+                  total_value = 0
+
+
+        with open('static/json/data.json', 'w') as outfile:
+            json.dump(data, outfile)
+
+
+        if total_val / 10 > 50:
+            Notification = "Warning: The Humid value in your environment is too high."
+            return Notification
+
+
+# history data of week
+class week_HvalueView(generic.ListView):
+    template_name = "week_Hvalue.html"
+    context_object_name = "Notification"
+    print("I am here0")
+
+    def get_queryset(self):
+        weekdata = Seneor.objects.all().order_by('-time')[:420]
+        data = []
+        count = 1
+        average_value = 0
+        total_value = 0
+        day = 1
+        total_val = 0
+        print("I am here1")
+        for _ in weekdata:
+            print("I am here2")
+            total_val = total_val + _.Hvalue
+            if count % 60 != 0:
+                total_value = total_value + _.Hvalue
+                count = count + 1
+            else:
+                count = 1
+                average_value = total_value / 60
+                json_data = {
+                    "id": day,
+                    "Hvalue": average_value
+                }
+                data.insert(0, json_data)
+                day = day + 1
+                total_value = 0
+
+        with open('static/json/data.json', 'w') as outfile:
+            json.dump(data, outfile)
+
+        if total_val / 60 > 40:
+            Notification = "Warning: This Week's Humid value in your environment is too high."
+            return Notification
+
+
+class week_HvalueView(generic.ListView):
+    template_name = "week_Hvalue.html"
+    context_object_name = "Notification"
+    print("I am here0")
+
+    def get_queryset(self):
+        weekdata = Seneor.objects.all().order_by('-time')[:420]
+        data = []
+        count = 1
+        average_value = 0
+        total_value = 0
+        day = 1
+        total_val = 0
+        print("I am here1")
+        for _ in weekdata:
+            print("I am here2")
+            total_val = total_val + _.Hvalue
+            if count % 60 != 0:
+                total_value = total_value + _.Hvalue
+                count = count + 1
+            else:
+                count = 1
+                average_value = total_value / 60
+                json_data = {
+                    "id": day,
+                    "Hvalue": average_value
+                }
+                data.insert(0, json_data)
+                day = day + 1
+                total_value = 0
+
+        with open('static/json/data.json', 'w') as outfile:
+            json.dump(data, outfile)
+
+        if total_val / 60 > 40:
+            Notification = "Warning: This Week's Humid value in your environment is too high."
+            return Notification
+
+
+class week_TvalueView(generic.ListView):
+    template_name = "week_Tvalue.html"
+    context_object_name = "Notification"
+
+    def get_queryset(self):
+        weekdata = Seneor.objects.all().order_by('-time')[:420]
+        data = []
+        count = 1
+        average_value = 0
+        total_value = 0
+        day = 1
+        total_val = 0
+        for _ in weekdata:
+            total_val = total_val + _.Tvalue
+            if count % 60 != 0:
+                total_value = total_value + _.Tvalue
+                count = count + 1
+            else:
+                count = 1
+                average_value = total_value / 60
+                json_data = {
+                    "id": day,
+                    "Tvalue": average_value
+                }
+                data.insert(0, json_data)
+                day = day + 1
+                total_value = 0
+
+        with open('static/json/data.json', 'w') as outfile:
+            json.dump(data, outfile)
+
+        if total_val / 60 > 40:
+            Notification = "Warning: This Week's Humid value in your environment is too high."
+            return Notification
+
+class week_UvalueView(generic.ListView):
+    template_name = "week_Uvalue.html"
+    context_object_name = "Notification"
+
+    def get_queryset(self):
+        weekdata = Seneor.objects.all().order_by('-time')[:420]
+        data = []
+        count = 1
+        average_value = 0
+        total_value = 0
+        day = 1
+        total_val = 0
+        for _ in weekdata:
+            total_val = total_val + _.Uvalue
+            if count % 60 != 0:
+                total_value = total_value + _.Uvalue
+                count = count + 1
+            else:
+                count = 1
+                average_value = total_value / 60
+                json_data = {
+                    "id": day,
+                    "Uvalue": average_value
+                }
+                data.insert(0, json_data)
+                day = day + 1
+                total_value = 0
+
+        with open('static/json/data.json', 'w') as outfile:
+            json.dump(data, outfile)
+
+        if total_val / 60 > 40:
+            Notification = "Warning: This Week's UV value in your environment is too high."
+            return Notification
