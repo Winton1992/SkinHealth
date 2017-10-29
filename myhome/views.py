@@ -31,7 +31,7 @@ class MyHomeListView(LoginRequiredMixin, ListView):
 
 def ArdunioConnection(request):
 
-     ser = serial.Serial("/dev/cu.usbmodem1411", baudrate=9600)
+     ser = serial.Serial("/dev/cu.usbmodem1421", baudrate=9600)
 
      while 1:
          arduinoData = ser.readline().decode('ascii')
@@ -48,7 +48,8 @@ def ArdunioConnection(request):
          data = Seneor.objects.create(Tvalue=Tvalue, Uvalue=Uvalue, Hvalue=Hvalue)
          data.save()
 
-         if (Uvalue <= 2):
+         if(Uvalue <= 2):
+
              if(Hvalue <=40):
                  context = {'UVNote': 'UV value is low. You can go out and have fun!',
                             'HNote': 'Humidity value is too low for your skin',
@@ -57,19 +58,70 @@ def ArdunioConnection(request):
                  context = {'UVNote': 'UV value is low. You can go out and have fun!',
                             'HNote': 'This is moderate humidity level for your skin. Enjoy your environment!',
                             'data': data}
+             elif (Hvalue > 60):
+                 context = {'UVNote': 'UV value is low. You can go out and have fun!',
+                           'HNote': 'The humidity level is too high. Higher levels to allow dust mites to grow on skin and trigger for skin allergy.',
+                           'data': data}
 
          elif(Uvalue > 2 and Uvalue <= 5):
-             context = {'UVNote': 'UV value is moderate. You can go out and fun! But you’d better to use sunscreen(SPF30) or sunglasses to protect your skin from aging causing by UV.',
-                           'data': data}
+
+             if (Hvalue <= 40):
+                 context = {'UVNote': 'UV value is moderate. You can go out and fun! But you’d better to use sunscreen(SPF30) or sunglasses to protect your skin from aging causing by UV.',
+                            'HNote': 'Humidity value is too low for your skin',
+                            'data': data}
+             elif (Hvalue > 40 and Hvalue <= 60):
+                 context = {'UVNote': 'UV value is moderate. You can go out and fun! But you’d better to use sunscreen(SPF30) or sunglasses to protect your skin from aging causing by UV.',
+                            'HNote': 'This is moderate humidity level for your skin. Enjoy your environment!',
+                            'data': data}
+             elif (Hvalue > 60):
+                 context = {'UVNote': 'UV value is moderate. You can go out and fun! But you’d better to use sunscreen(SPF30) or sunglasses to protect your skin from aging causing by UV.',
+                            'HNote': 'The humidity level is too high. Higher levels to allow dust mites to grow on skin and trigger for skin allergy.',
+                            'data': data}
          elif(Uvalue > 5 and Uvalue <= 7):
-             context = {'UVNote': 'UV value is high. Please use appropriate protection like sunscreen (SPF 50++), sunglasses, sun-protective clothing or slap.',
-                        'data': data}
+
+             if (Hvalue <= 40):
+                 context = {
+                     'UVNote': 'UV value is high. Please use appropriate protection like sunscreen (SPF 50++), sunglasses, sun-protective clothing or slap.',
+                     'HNote': 'Humidity value is too low for your skin',
+                     'data': data}
+             elif (Hvalue > 40 and Hvalue <= 60):
+                 context = {
+                     'UVNote': 'UV value is high. Please use appropriate protection like sunscreen (SPF 50++), sunglasses, sun-protective clothing or slap.',
+                     'HNote': 'This is moderate humidity level for your skin. Enjoy your environment!',
+                     'data': data}
+             elif (Hvalue > 60):
+                 context = {
+                     'UVNote': 'UV value is high. Please use appropriate protection like sunscreen (SPF 50++), sunglasses, sun-protective clothing or slap.',
+                     'HNote': 'The humidity level is too high. Higher levels to allow dust mites to grow on skin and trigger for skin allergy.',
+                     'data': data}
          elif(Uvalue > 8 and Uvalue <= 10):
-             context = {'UVNote': 'UV value is very high. You’d better stay indoors or use appropriate protection like sunscreen (SPF 50+++), sunglasses, sun-protective clothing or slap.',
-                        'data': data}
+
+             if (Hvalue <= 40):
+                 context = {'UVNote': 'UV value is very high. You’d better stay indoors or use appropriate protection like sunscreen (SPF 50+++), sunglasses, sun-protective clothing or slap.',
+                            'HNote': 'Humidity value is too low for your skin',
+                            'data': data}
+             elif (Hvalue > 40 and Hvalue <= 60):
+                 context = {'UVNote': 'UV value is very high. You’d better stay indoors or use appropriate protection like sunscreen (SPF 50+++), sunglasses, sun-protective clothing or slap.',
+                            'HNote': 'This is moderate humidity level for your skin. Enjoy your environment!',
+                            'data': data}
+             elif (Hvalue > 60):
+                 context = {'UVNote': 'UV value is very high. You’d better stay indoors or use appropriate protection like sunscreen (SPF 50+++), sunglasses, sun-protective clothing or slap.',
+                            'HNote': 'The humidity level is too high. Higher levels to allow dust mites to grow on skin and trigger for skin allergy.',
+                            'data': data}
          else:
-            context = {'UVNote': 'UV value is extremely strong. You should better stay indoors. The sun ultraviolet (UV) radiation is the major cause of skin cancer and cause of skin aging.',
-                        'data': data}
+
+             if (Hvalue <= 40):
+                 context = {'UVNote': 'UV value is extremely strong. You should better stay indoors. The sun ultraviolet (UV) radiation is the major cause of skin cancer and cause of skin aging',
+                            'HNote': 'Humidity value is too low for your skin',
+                            'data': data}
+             elif (Hvalue > 40 and Hvalue <= 60):
+                 context = {'UVNote': 'UV value is extremely strong. You should better stay indoors. The sun ultraviolet (UV) radiation is the major cause of skin cancer and cause of skin aging',
+                            'HNote': 'This is moderate humidity level for your skin. Enjoy your environment!',
+                            'data': data}
+             elif (Hvalue > 60):
+                 context = {'UVNote': 'UV value is extremely strong. You should better stay indoors. The sun ultraviolet (UV) radiation is the major cause of skin cancer and cause of skin aging',
+                            'HNote': 'The humidity level is too high. Higher levels to allow dust mites to grow on skin and trigger for skin allergy.',
+                            'data': data}
 
          break
 
@@ -107,6 +159,7 @@ def ArdunioReadLong(request):
      ser.close()
 
      return render(request, 'myhome.html', context)
+
 
 # class IndexView(generic.ListView):
 #     template_name = "showdata.html"
