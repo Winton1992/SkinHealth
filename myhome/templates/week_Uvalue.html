@@ -29,10 +29,10 @@
 
     <div class="col-xs-4">
          <div class="btn-group" role="group" aria-label="...">
-         <a type="button" class="btn btn-default" href="{% url "myhome:historyofTvalue" %}">Day</a>
-         <a type="button" class="btn btn-default" href="{% url "myhome:week_Tvalue" %}">Week</a>
+         <a type="button" class="btn btn-default" href="{% url "myhome:historyofUvalue" %}">Day</a>
+         <a type="button" class="btn btn-default" href="{% url "myhome:week_Uvalue" %}">Week</a>
     </div>
-
+            
          <img src="/static/image/advice.png" height="150" width="200">
          <textarea cols="50" rows="10" wrap="hard" readonly="yes">{{ Notification }} </textarea>
     </div>
@@ -86,15 +86,15 @@
 // load the data
                 d3.json(endpoint, function(error, data) {
 
-                function draw_graph(){
+                 function draw_graph(){
                     data.forEach(function(d) {
                         d.id = d.id;
-                        d.Tvalue = +d.Tvalue;
+                        d.Uvalue = +d.Uvalue;
                     });
 
                     // scale the range of the data
                     x.domain(data.map(function(d) { return d.id; }));
-                    y.domain([0, d3.max(data, function(d) { return d.Tvalue; })]);
+                    y.domain([0, d3.max(data, function(d) { return d.Uvalue; })]);
 
                     // add axis
                     svg.append("g")
@@ -107,9 +107,9 @@
                         .attr("dy", "-.55em")
                         .attr("transform", "rotate(-90)" );
 
-                     svg.append("g")
+                  svg.append("g")
                         .attr("class", "y axis")
-                        .call(yAxis)
+                        //.call(yAxis)
                         .append("text")
                         .attr("font-weight", "bold")
                         .attr("fill", "#000")
@@ -120,10 +120,9 @@
                         .style("text-anchor", "end")
                         .text("Average value/hour");
 
-
                   svg.append("g")
                         .attr("class", "y axis")
-                        .call(yAxis)
+                        //.call(yAxis)
                         .append("text")
                         .attr("font-weight", "bold")
                         .attr("fill", "#000")
@@ -133,7 +132,7 @@
                         .attr("dy", ".71em")
                         .style("font-size","15px")
                         .style("text-anchor", "end")
-                        .text("Temperature Value");
+                        .text("UV Value (UV)");
 
                     svg.append("g")
                         .attr("class", "y axis")
@@ -147,7 +146,7 @@
                         .attr("dy", ".71em")
                         .style("font-size","15px")
                         .style("text-anchor", "end")
-                        .text("Past 24 Hours");
+                        .text("Past 7 Days");
 
 
                     // Add bar chart
@@ -157,13 +156,14 @@
                         .attr("class", "bar")
                         .attr("x", function(d) { return x(d.id); })
                         .attr("width", x.rangeBand())
-                        .attr("y", function(d) { return y(d.Tvalue); })
-                        .attr("height", function(d) { return height - y(d.Tvalue); });
-                     };
+                        .attr("y", function(d) { return y(d.Uvalue); })
+                        .attr("height", function(d) { return height - y(d.Uvalue); });
+                    }
 
-                     draw_graph.call(svg, {
-                    data:data
-                  });
+
+                    draw_graph.call(svg, {
+                      data:data
+                    });
 
                 });
 

@@ -11,9 +11,10 @@ urlpatterns = [
     url(r'^historyofUvalue', views.History_UvalueView.as_view(), name='historyofUvalue'),
     url(r'^historyofHvalue', views.History_HvalueView.as_view(), name='historyofHvalue'),
     url(r'^UV', views.UV_valueView.as_view(), name='uvValue'),
-    # url(r'^currentHvalue', views.Current_Humidity_valueVieww.as_view(), name='currentHvalue'),
-    # url(r'^currentTvalue', views.Current_Temperature_valueView.as_view(), name='currentTvalue'),
-    # url(r'^currentUvalue', views.Current_UV_valueView.as_view(), name='currentUvalue'),
+
+    url(r'^week_Hvalue', views.week_HvalueView.as_view(), name='week_Hvalue'),
+    url(r'^week_Tvalue', views.week_TvalueView.as_view(), name='week_Tvalue'),
+    url(r'^week_Uvalue', views.week_UvalueView.as_view(), name='week_Uvalue'),
 
     url(r'^login/$', views.user_login, name="login"),
     url(r'^logout/$', views.user_logout, name="logout"),
