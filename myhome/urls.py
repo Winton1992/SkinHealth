@@ -4,6 +4,7 @@ from . import views
 app_name = 'myhome'
 
 urlpatterns = [
+    url(r'^index', views.IndexView.as_view(), name='index'),
     url(r'^$', views.MyHomeListView.as_view(), name='myhome'),
     url(r'^testCon$', views.ArdunioConnection, name='connection'),
     url(r'^ReadLong$', views.ArdunioReadLong, name='readlong'),

@@ -1126,9 +1126,18 @@ h5.best {
 }
 }
 
-.center1 {margin: 0 auto;
-    width: 200px;
-    background: black;
-    padding: 20px;
-    color: white;
+.back1.{
+  /*padding: 25px;*/
+  background-color:#000000;
+  opacity: 0.5;
+  position: absolute;
+  right: 15%;
+  bottom: 150px;
+  left: 15%;
+  z-index: 10;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
 }

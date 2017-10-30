@@ -28,16 +28,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="header">
 		<div class="header-top">
 			<div class="logo">
-				<h1><a href="index.html">skinhealth</a></h1>
+				<h1><a href="#">skinhealth</a></h1>
 			</div>
 			<div class="top-nav">
 			        <span class="menu"> </span>
 					<ul>
-						<li ><a href="index.html" class="scroll" >HOME</a></li>
-						<li class="active"><a href="about.html" class="scroll" data-hover="ABOUT">ABOUT</a></li>
-						<li><a href="services.html" class="scroll" data-hover="SERVICES">SERVICES</a></li>
-						<li><a href="404.html" class="scroll" data-hover="BLOG">BLOG</a></li>
-						<li><a href="contact.html" class="scroll" data-hover="CONTACT">CONTACT</a></li>
+						<li ><a href="{% url 'myhome:myhome' %}"class="scroll" data-hover="HOME" >HOME</a></li>
+						<li class="scroll"><a href="{% url 'myhome:historyofUvalue' %}" class="scroll" data-hover="UV">UV</a></li>
+						<li><a href="{% url 'myhome:historyofTvalue' %}" class="scroll" data-hover="Temperature">Temperature</a></li>
+						<li><a href="{% url 'myhome:historyofHvalue' %}" class="scroll" data-hover="Humidity">Humidity</a></li>
+                        <li><a href="{% url 'myhome:info' %}" class="scroll" data-hover="Profile">Profile</a></li>
+{#                        <li><a href="{% url 'myhome:edit_profile' %}" class="scroll" data-hover="Edit_ptofile">Edit_ptofile</a></li>#}
+{#						<li><a href="{% url "myhome:login" %}" class="scroll" data-hover="Login">Login</a></li>#}
+                        <li><a href="{% url 'myhome:logout' %}" class="scroll" data-hover="Logout">Logout</a></li>
+{#                        <a class="btn btn-secondary" href="{% url 'myhome:logout' %}" role="button">Logout</a>#}
 					</ul>
 					<!--script-->
 				<script>
@@ -64,6 +68,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 
 	<!--footer-->
+<div class="container">
 <br/>
 <br/>
 <br/>
@@ -84,6 +89,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <br/>
 <br/>
 <br/>
+    <br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+    </div>
 	<div class="footer">
 		<div class="container">
 					 <ul class="social-ic-icons">
