@@ -300,9 +300,12 @@ class History_TvalueView(generic.ListView):
         with open('static/json/data.json', 'w') as outfile:
             json.dump(data, outfile)
 
-        if total_val / 10 > 20:
-             Notification = "Warning: The temperature is too hign."
-             return Notification
+        if total_val / 60 > 30:
+            Notification = "Warning: Today's temperature in your environment was too high."
+            return Notification
+        else:
+            Notification = "Cool, the temperature in past 24 hours was perfect! ."
+            return Notification
 
 
 class History_UvalueView(generic.ListView):
@@ -343,9 +346,12 @@ class History_UvalueView(generic.ListView):
         with open('static/json/data.json', 'w') as outfile:
             json.dump(data, outfile)
 
-        if total_val / 10 > 50:
-             Notification = "Warning: You were exposed under high UV value."
-             return Notification
+        if total_val / 60 > 30:
+            Notification = "Warning: Today's UV value in your environment were too high."
+            return Notification
+        else:
+            Notification = "Great! You did not expose to any intensity ultraviolet rays ."
+            return Notification
 
 
 class History_HvalueView(generic.ListView):
@@ -389,9 +395,11 @@ class History_HvalueView(generic.ListView):
         with open('static/json/data.json', 'w') as outfile:
             json.dump(data, outfile)
 
-
-        if total_val / 10 > 50:
-            Notification = "Warning: The Humid value in your environment is too high."
+        if total_val / 60 < 56:
+            Notification = "The humidity level today was good for your skin. Enjoy your environment!"
+            return Notification
+        if total_val / 60 > 56:
+            Notification = "warning: The humidity level today was too high. Higher levels to allow dust mites to grow on skin and trigger for skin allergy."
             return Notification
 
 
@@ -430,15 +438,18 @@ class week_HvalueView(generic.ListView):
         with open('static/json/data.json', 'w') as outfile:
             json.dump(data, outfile)
 
-        if total_val / 60 > 40:
-            Notification = "Warning: This Week's Humid value in your environment is too high."
+        if total_val / 60 > 38 and total_val / 60 < 56:
+            Notification = "The humidity level in past 7 days was good for your skin. Enjoy your environment!"
             return Notification
+        if total_val / 60 > 56 and total_val / 60 < 80:
+            Notification = "warning: The humidity level in past 7 days was too high. Higher levels to allow dust mites to grow on skin and trigger for skin allergy."
+            return Notification
+
 
 
 class week_HvalueView(generic.ListView):
     template_name = "week_Hvalue.html"
     context_object_name = "Notification"
-    print("I am here0")
 
     def get_queryset(self):
         weekdata = Seneor.objects.all().order_by('-time')[:420]
@@ -448,9 +459,7 @@ class week_HvalueView(generic.ListView):
         total_value = 0
         day = 1
         total_val = 0
-        print("I am here1")
         for _ in weekdata:
-            print("I am here2")
             total_val = total_val + _.Hvalue
             if count % 60 != 0:
                 total_value = total_value + _.Hvalue
@@ -469,10 +478,12 @@ class week_HvalueView(generic.ListView):
         with open('static/json/data.json', 'w') as outfile:
             json.dump(data, outfile)
 
-        if total_val / 60 > 40:
-            Notification = "Warning: This Week's Humid value in your environment is too high."
+        if total_val / 60 < 56:
+            Notification = "The humidity level in past 7 days was good for your skin. Enjoy your environment!"
             return Notification
-
+        if total_val / 60 > 56:
+            Notification = "warning: The humidity level in past 7 days was too high. Higher levels to allow dust mites to grow on skin and trigger for skin allergy."
+            return Notification
 
 class week_TvalueView(generic.ListView):
     template_name = "week_Tvalue.html"
@@ -505,8 +516,11 @@ class week_TvalueView(generic.ListView):
         with open('static/json/data.json', 'w') as outfile:
             json.dump(data, outfile)
 
-        if total_val / 60 > 40:
-            Notification = "Warning: This Week's Humid value in your environment is too high."
+        if total_val / 60 > 30:
+            Notification = "Warning: The past 7 days's temperature in your environment was too high."
+            return Notification
+        else:
+            Notification = "Cool, the temperature in past 7 days is perfect! ."
             return Notification
 
 class week_UvalueView(generic.ListView):
@@ -540,6 +554,11 @@ class week_UvalueView(generic.ListView):
         with open('static/json/data.json', 'w') as outfile:
             json.dump(data, outfile)
 
-        if total_val / 60 > 40:
-            Notification = "Warning: This Week's UV value in your environment is too high."
+        if total_val / 60 > 30:
+            Notification = "Warning: The past 7 days's UV value in your environment were too high."
             return Notification
+        else:
+            Notification = "Great! You did not expose to any intensity ultraviolet rays ."
+            return Notification
+
+
