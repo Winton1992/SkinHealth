@@ -31,3 +31,4 @@ urlpatterns = [
     # Raw Data API
     url(r'^api/Data/history/$', APIDataHistoryView.as_view(), name='api-data-history'),
 ]
+
