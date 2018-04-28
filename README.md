@@ -1,11 +1,10 @@
-# README #
-
-Welcome to the SkinHealth web application.
-
-Original Repository From Bitbucket: https://bitbucket.org/elec5622group04/elec5622
+# SkinHealth Web Application #
 
 Overview
 The goal of this project is to build an electronic device by combining hardware and software, which can monitor the data of UV radiation, humidity and temperature in the environment, and give some useful suggestions to the users according their skin type. And this app is free for downloading.
+
+Original Repository From Bitbucket: https://bitbucket.org/elec5622group04/elec5622       
+Demo link: https://www.youtube.com/watch?v=7NtaR8CL4W8&feature=youtu.be
 
 Aims   
 1. To monitor and provide the real-time data about the UV radiation, humidity, and temperature in the environment.   
@@ -24,12 +23,6 @@ Git Workflow
 Use the feature branch git workflow
 
 Please do not work directly on the master branch. It must stay stable and working at all times. Consider submiting a pull request when you want to consolidate your feature branch into the master branch.
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
 
 ### Who do I talk to? ###
 
