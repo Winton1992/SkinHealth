@@ -2,6 +2,8 @@
 
 Welcome to the SkinHealth web application.
 
+Original Repository From Bitbucket: https://bitbucket.org/elec5622group04/elec5622
+
 Overview
 The goal of this project is to build an electronic device by combining hardware and software, which can monitor the data of UV radiation, humidity and temperature in the environment, and give some useful suggestions to the users according their skin type. And this app is free for downloading.
 
