@@ -27,3 +27,6 @@ Please do not work directly on the master branch. It must stay stable and workin
 ### Who do I talk to? ###
 
 for more information, Contact: winton9219@gmail.com
+
+<img src="pic/01.png" alt="alt text" width="50%" height="50%"><img src="pic/02.png" alt="alt text" width="50%" height="50%">
+<img src="pic/03.png" alt="alt text" width="50%" height="50%"><img src="pic/04.png" alt="alt text" width="50%" height="50%">
